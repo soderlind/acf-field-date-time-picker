@@ -18,12 +18,10 @@ This is an add-on for the [Advanced Custom Fields v4.0](https://github.com/ellio
 
 Please see how to [Create a Time Picker field](http://soderlind.no/time-picker-field-for-advanced-custom-fields/#create-a-time-picker-field) at my site 
 
-## Credits ##
+## Credit ##
 
-Date and Time Picker field for Advanced Custom Fields v4.0 uses the [jQuery timepicker addon](http://trentrichardson.com/examples/timepicker/)
-By: (Trent Richardson)[http://trentrichardson.com]
+Date and Time Picker field for Advanced Custom Fields v4.0 uses the [jQuery timepicker addon](http://trentrichardson.com/examples/timepicker/) by [Trent Richardson](http://trentrichardson.com)
 
-Copyright 2012 Trent Richardson
-Dual licensed under the MIT and GPL licenses.
-http://trentrichardson.com/Impromptu/GPL-LICENSE.txt
-http://trentrichardson.com/Impromptu/MIT-LICENSE.txt
+Copyright 2012 Trent Richardson. Dual licensed under the [MIT](http://trentrichardson.com/Impromptu/MIT-LICENSE.txt) and [GPL](http://trentrichardson.com/Impromptu/GPL-LICENSE.txt) licenses.
+
+
