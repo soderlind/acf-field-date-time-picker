@@ -14,7 +14,7 @@
 
 class acf_field_date_time_picker extends acf_field
 {
-	var $localizationDomain = 'acf_time_picker';
+	var $localizationDomain = 'acf_date_time_picker';
 	/*
 	*  __construct
 	*
