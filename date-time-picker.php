@@ -15,6 +15,9 @@
 class acf_field_date_time_picker extends acf_field
 {
 	var $localizationDomain = 'acf_date_time_picker';
+
+    var $settings;
+
 	/*
 	*  __construct
 	*
@@ -33,6 +36,12 @@ class acf_field_date_time_picker extends acf_field
 		load_textdomain( $this->localizationDomain, sprintf( "/%s/language/%s-%s.mo", dirname( plugin_basename( __FILE__ ) ), $this->localizationDomain, $locale ) );
 		// do not delete!
 		parent::__construct();
+
+        // settings
+        $this->settings = array(
+            'path' => apply_filters('acf/helpers/get_path', __FILE__),
+            'dir' => apply_filters('acf/helpers/get_dir', __FILE__)
+        );
 	}
 
 
@@ -293,17 +302,17 @@ class acf_field_date_time_picker extends acf_field
 	function input_admin_enqueue_scripts() {
 		global $wp_locale;
 
-		wp_enqueue_script( 'jquery-ui-timepicker', get_stylesheet_directory_uri() . '/fields/acf-field-date-time-picker/js/jQuery-Timepicker-Addon/jquery-ui-timepicker-addon.js', array(
+		wp_enqueue_script( 'jquery-ui-timepicker', $this->settings['dir'] .'js/jQuery-Timepicker-Addon/jquery-ui-timepicker-addon.js', array(
 				'jquery-ui-datepicker',
 				'jquery-ui-slider'
 			), '1.0.0', true );
-		wp_enqueue_script( 'timepicker', get_stylesheet_directory_uri() . '/fields/acf-field-date-time-picker/js/timepicker.js', array(
+		wp_enqueue_script( 'timepicker', $this->settings['dir'] .'js/timepicker.js', array(
 				'jquery-ui-timepicker'
 			), '4.0.0', true );
 
 
-		wp_enqueue_style('jquery-style', get_stylesheet_directory_uri() . '/fields/acf-field-date-time-picker/css/jquery-ui.css'); 
-		wp_enqueue_style('timepicker',  get_stylesheet_directory_uri() . '/fields/acf-field-date-time-picker/js/jQuery-Timepicker-Addon/jquery-ui-timepicker-addon.css',array(
+		wp_enqueue_style('jquery-style', $this->settings['dir'] .'css/jquery-ui.css');
+		wp_enqueue_style('timepicker',  $this->settings['dir'] .'js/jQuery-Timepicker-Addon/jquery-ui-timepicker-addon.css',array(
 			/*'jquery-style'*/
 		),'1.0.0');
 
