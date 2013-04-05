@@ -21,6 +21,10 @@ This add-on will work with:
 * version 4 and up
 * version 3 and bellow
 
+= More Information =
+
+[http://soderlind.no/time-picker-field-for-advanced-custom-fields/](http://soderlind.no/time-picker-field-for-advanced-custom-fields/)
+
 == Installation ==
 
 This add-on can be treated as both a WP plugin and a theme include.
