@@ -43,4 +43,4 @@ function my_register_fields()
 
 ### More Information
 
-Please read the readme.txt file for more information
+http://soderlind.no/time-picker-field-for-advanced-custom-fields/

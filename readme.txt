@@ -1,9 +1,10 @@
 === Advanced Custom Fields: Date and Time Picker Field ===
 Contributors: PerS
-Tags: 
+Donate link: http://soderlind.no/donate/
+Tags: acf
 Requires at least: 3.4
 Tested up to: 3.5.1
-Stable tag: trunk
+Stable tag: 2.0.0.beta
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
