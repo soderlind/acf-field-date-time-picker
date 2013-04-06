@@ -88,7 +88,7 @@ class acf_field_date_time_picker extends acf_field
 		</tr>
 		<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_dateformat">
 			<td class="label">
-				<label><?php _e( "Date format", $this->domain ); ?></label>
+				<label><?php _e( "Date Format", $this->domain ); ?></label>
 				<p class="description"><?php printf(__("eg. mm/dd/yy. read more about <a href=\"%s\" target=\"_blank\">formatting  date</a>", $this->domain ),"http://docs.jquery.com/UI/Datepicker/formatDate");?></p>
 			</td>
 			<td>
@@ -148,7 +148,7 @@ class acf_field_date_time_picker extends acf_field
 						, 'layout'  => 'horizontal'
 						, 'choices' => array(
 								'slider'   => __( 'Slider', $this->domain )
-								, 'select' => __( 'Select', $this->domain )
+								, 'select' => __( 'Dropdown', $this->domain )
 						)
 					) );
 				?>
