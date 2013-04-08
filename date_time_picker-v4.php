@@ -5,7 +5,8 @@ class acf_field_date_time_picker extends acf_field
 	// vars
 	var $settings   // will hold info such as dir / path
 		, $defaults // will hold default field options
-		, $domain;  // holds the language domain
+		, $domain   // holds the language domain
+		, $lang;
 		
 	/*
 	*  __construct
@@ -31,6 +32,7 @@ class acf_field_date_time_picker extends acf_field
 			, 'date_format'      => 'mm/dd/yy'
 			, 'show_week_number' => false
 			, 'picker'           => 'slider'
+			, 'language'         => 'en'
 		);
 
 		
@@ -43,7 +45,7 @@ class acf_field_date_time_picker extends acf_field
 		$this->settings = array(
 			'path'      => apply_filters('acf/helpers/get_path', __FILE__)
 			, 'dir'     => apply_filters('acf/helpers/get_dir', __FILE__)
-			, 'version' => '2.0.0.beta'
+			, 'version' => '2.0.3'
 		);
 
 	}
@@ -153,12 +155,40 @@ class acf_field_date_time_picker extends acf_field
 					) );
 				?>
 			</td>
+		</tr>
+		<?php /* ?>
+		<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_week_number">
+			<td class="label">
+				<label for=""><?php _e( "Time Picker language?", $this->domain ); ?></label>
+			</td>
+			<td>
+				<?php
+				$dir_path = $this->settings['path'] . 'js/localization/';
+				$exclude_list = array(".", "..");
+				$languages = preg_filter("/jquery-ui-timepicker-(.*?)\.js/","$1",array_diff(scandir($dir_path), $exclude_list));				
+				$locales["en"] = "en";
+				foreach ($languages as $k => $v) {
+					$locales[$v] = $v;
+				}
+				asort($locales);
+				$locales["unknown"] = 'Use: "lang/' . $this->domain . '-' . get_locale() . '.mo"';
+
+				do_action('acf/create_field', array(
+						'type'      => 'select'
+						, 'name'    => 'fields['.$key.'][language]'
+						, 'value'   => $field['language']
+						, 'choices' => $locales
+					) );
+				?>
+			</td>
 		</tr> 
+		<?php */?> 
 		<?php
 		
 	}
-	
-	
+
+
+
 	/*
 	*  create_field()
 	*
@@ -183,6 +213,8 @@ class acf_field_date_time_picker extends acf_field
 	}
 	
 	
+
+
 	/*
 	*  input_admin_enqueue_scripts()
 	*
@@ -196,6 +228,7 @@ class acf_field_date_time_picker extends acf_field
 	*/
 
 	function input_admin_enqueue_scripts() {
+
 		global $wp_locale;
 
 		$has_locale = false;
@@ -277,6 +310,10 @@ class acf_field_date_time_picker extends acf_field
 			return $tmp_locale;
 		}
 	}
+
+
+
+
 	
 }
 

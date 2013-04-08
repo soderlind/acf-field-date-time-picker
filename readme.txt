@@ -4,7 +4,7 @@ Donate link: http://soderlind.no/donate/
 Tags: acf, custom field,datepicker,timepicker
 Requires at least: 3.4
 Tested up to: 3.5.1
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,8 +27,24 @@ This add-on will work with:
 
 == Installation ==
 
+
+= Plugin =
 1. Copy the 'acf-date_time_picker' folder into your plugins folder
 2. Activate the plugin via the Plugins admin page
+
+= Include =
+1.	Copy the 'acf-date_time_picker' folder into your theme folder (can use sub folders). You can place the folder anywhere inside the 'wp-content' directory
+2.	Edit your functions.php file and add the code below (Make sure the path is correct to include the acf-date_time_picker.php file)
+
+`
+add_action('acf/register_fields', 'my_register_fields');
+
+function my_register_fields()
+{
+	include_once('acf-date_time_picker/acf-date_time_picker.php');
+}
+`
+
 
 == Screenshots ==
 
@@ -38,8 +54,13 @@ This add-on will work with:
 
 == Changelog ==
 
+= 2.0.3 =
+* Fixed Repeater field bug
+* Added support for including the field in a theme
+= 2.0.2 =
+* Updated readme.txt
 = 2.0.1 =
-* 
+* Minor fix 
 = 2.0.0.beta =
 * Total rewrite, based on the [acf-field-type-template](https://github.com/elliotcondon/acf-field-type-template). Works with ACF v3 and ACF v4. In this beta you can only add the Date Time Picker field as a plugin (i.e. not as a template field).
 = 1.2.0 = 

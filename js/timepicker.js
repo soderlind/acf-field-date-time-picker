@@ -1,10 +1,10 @@
 /*
 Attach a jQuery.datetimepicker() to "input[type=text].time_picker" fields. Will also attach to dynamic added fields.
 */
-//jQuery(function() {
-//	jQuery("body").on("focusin", "input[type=text].time_picker",  function(){
-jQuery(document).live('acf/setup_fields', function(e, postbox){
-		jQuery(postbox).find('.time_picker').each(function(){
+jQuery(function() {
+	jQuery(".field").on("focusin", "input[type=text].time_picker",  function(){
+//jQuery(document).live('acf/setup_fields', function(e, postbox){
+//		jQuery(postbox).find('.time_picker').each(function(){
 			
 		self = jQuery(this);
 		self.datetimepicker({

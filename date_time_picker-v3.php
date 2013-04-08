@@ -38,11 +38,68 @@ class acf_field_date_time_picker extends acf_Field {
 		);
 
 		$this->settings = array(
-			'path'      => plugin_dir_path( __FILE__)
-			, 'dir'     => plugin_dir_url( __FILE__)
-			, 'version' => '2.0.0.beta'
-		);
+			'path'      => $this->helpers_get_path( __FILE__ )
+			, 'dir'     => $this->helpers_get_dir( __FILE__ )
+			, 'version' => '2.0.3'
+		);	
 	}
+
+
+   	/*
+    *  helpers_get_path
+    *
+    *  @description: calculates the path (works for plugin / theme folders)
+    *  @since: 3.6
+    *  @created: 30/01/13
+    */
+    
+    function helpers_get_path( $file ) {
+        return trailingslashit(dirname($file));
+    }
+    
+    
+    
+    /*
+    *  helpers_get_dir
+    *
+    *  @description: calculates the directory (works for plugin / theme folders)
+    *  @since: 3.6
+    *  @created: 30/01/13
+    */
+    
+    function helpers_get_dir( $file ) {
+        $dir = trailingslashit(dirname($file));
+        $count = 0;
+        
+        
+        // sanitize for Win32 installs
+        $dir = str_replace('\\' ,'/', $dir); 
+        
+        
+        // if file is in plugins folder
+        $wp_plugin_dir = str_replace('\\' ,'/', WP_PLUGIN_DIR); 
+        $dir = str_replace($wp_plugin_dir, WP_PLUGIN_URL, $dir, $count);
+        
+        
+        if( $count < 1 )
+        {
+	        // if file is in wp-content folder
+	        $wp_content_dir = str_replace('\\' ,'/', WP_CONTENT_DIR); 
+	        $dir = str_replace($wp_content_dir, WP_CONTENT_URL, $dir, $count);
+        }
+        
+        
+        if( $count < 1 )
+        {
+	        // if file is in ??? folder
+	        $wp_dir = str_replace('\\' ,'/', ABSPATH); 
+	        $dir = str_replace($wp_dir, site_url('/'), $dir);
+        }
+        
+
+        return $dir;
+    }
+
 
 
 	/*--------------------------------------------------------------------------------------
