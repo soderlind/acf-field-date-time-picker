@@ -4,7 +4,7 @@ Donate link: http://soderlind.no/donate/
 Tags: acf, custom field,datepicker,timepicker
 Requires at least: 3.4
 Tested up to: 3.5.1
-Stable tag: 2.0.3
+Stable tag: 2.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,7 +53,8 @@ function my_register_fields()
 3. Time Picker
 
 == Changelog ==
-
+= 2.0.4 =
+* Updated JavaScript [language detection and loading](http://soderlind.no/time-picker-field-for-advanced-custom-fields/#localization) 
 = 2.0.3 =
 * Fixed Repeater field bug
 * Added support for including the field in a theme

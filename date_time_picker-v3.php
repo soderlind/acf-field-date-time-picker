@@ -40,7 +40,7 @@ class acf_field_date_time_picker extends acf_Field {
 		$this->settings = array(
 			'path'      => $this->helpers_get_path( __FILE__ )
 			, 'dir'     => $this->helpers_get_dir( __FILE__ )
-			, 'version' => '2.0.3'
+			, 'version' => '2.0.4'
 		);	
 	}
 
@@ -320,12 +320,29 @@ class acf_field_date_time_picker extends acf_Field {
 	}
 	
 	function get_js_locale($locale) {
-		$tmp_locale = ( '' == $locale ) ? 'en' : strtolower($locale);
-		if (strpos($tmp_locale,'_') !== false) {
-			return substr( $tmp_locale, 3, 2 );
+		$dir_path = $this->settings['path'] . 'js/localization/';
+		$exclude_list = array(".", "..");
+		$languages = $this->ps_preg_filter("/jquery-ui-timepicker-(.*?)\.js/","$1",array_diff(scandir($dir_path), $exclude_list));				
+
+		$locale = strtolower(str_replace("_", "-", $locale));
+
+		if (false !== strpos($locale,'-')) {
+			$l = explode("-",$locale);
+			$pattern = array('/' .  $locale . '/','/' . $l[0] . '/', '/' . $l[1]  . '/');
 		} else {
-			return $tmp_locale;
+			$pattern = array('/' . $locale . '/');
 		}
+		$res = $this->ps_preg_filter($pattern,"$0",$languages,-1,$count);
+
+		return ($count) ? implode("", $res) : 'en';
+	}
+
+
+	function ps_preg_filter ($pattern, $replace, $subject,$limit = -1, &$count = 0) {
+		if (function_exists('preg_filter'))
+			return preg_filter($pattern, $replace, $subject,$limit,$count);
+		else
+			return  array_diff(preg_replace($pattern, $replace, $subject,$limit,$count), $subject);
 	}
 
 

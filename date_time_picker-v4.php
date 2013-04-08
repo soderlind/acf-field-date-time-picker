@@ -45,7 +45,7 @@ class acf_field_date_time_picker extends acf_field
 		$this->settings = array(
 			'path'      => apply_filters('acf/helpers/get_path', __FILE__)
 			, 'dir'     => apply_filters('acf/helpers/get_dir', __FILE__)
-			, 'version' => '2.0.3'
+			, 'version' => '2.0.4'
 		);
 
 	}
@@ -233,12 +233,13 @@ class acf_field_date_time_picker extends acf_field
 
 		$has_locale = false;
 		$js_locale = $this->get_js_locale(get_locale());
+
 		wp_enqueue_script( 'jquery-ui-timepicker', $this->settings['dir'] . 'js/jquery-ui-timepicker-addon.js', array(
 				'jquery-ui-datepicker',
 				'jquery-ui-slider'
 		), $this->settings['version'], true );	
 
-		if ( file_exists( dirname( __FILE__ ) . '/js/localization/jquery-ui-timepicker-' . $js_locale . '.js' ) ) {
+		if ( file_exists(  $this->settings['path'] . '/js/localization/jquery-ui-timepicker-' . $js_locale . '.js' ) ) {
 			wp_enqueue_script( 'timepicker-localization', $this->settings['dir'] . 'js/localization/jquery-ui-timepicker-' . $js_locale . '.js', array(
 				'jquery-ui-timepicker'
 			), $this->settings['version'], true );
@@ -303,18 +304,32 @@ class acf_field_date_time_picker extends acf_field
 	}
 	
 	function get_js_locale($locale) {
-		$tmp_locale = ( '' == $locale ) ? 'en' : strtolower($locale);
-		if (strpos($tmp_locale,'_') !== false) {
-			return substr( $tmp_locale, 3, 2 );
+		$dir_path = $this->settings['path'] . 'js/localization/';
+		$exclude_list = array(".", "..");
+		$languages = $this->ps_preg_filter("/jquery-ui-timepicker-(.*?)\.js/","$1",array_diff(scandir($dir_path), $exclude_list));				
+
+		$locale = strtolower(str_replace("_", "-", $locale));
+
+		if (false !== strpos($locale,'-')) {
+			$l = explode("-",$locale);
+			$pattern = array('/' .  $locale . '/','/' . $l[0] . '/', '/' . $l[1]  . '/');
 		} else {
-			return $tmp_locale;
+			$pattern = array('/' . $locale . '/');
 		}
+		$res = $this->ps_preg_filter($pattern,"$0",$languages,-1,$count);
+
+		return ($count) ? implode("", $res) : 'en';
 	}
 
 
+	function ps_preg_filter ($pattern, $replace, $subject,$limit = -1, &$count = 0) {
+		if (function_exists('preg_filter'))
+			return preg_filter($pattern, $replace, $subject,$limit,$count);
+		else
+			return  array_diff(preg_replace($pattern, $replace, $subject,$limit,$count), $subject);
+	}
 
 
-	
 }
 
 

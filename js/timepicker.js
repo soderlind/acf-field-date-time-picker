@@ -3,9 +3,6 @@ Attach a jQuery.datetimepicker() to "input[type=text].time_picker" fields. Will 
 */
 jQuery(function() {
 	jQuery(".field").on("focusin", "input[type=text].time_picker",  function(){
-//jQuery(document).live('acf/setup_fields', function(e, postbox){
-//		jQuery(postbox).find('.time_picker').each(function(){
-			
 		self = jQuery(this);
 		self.datetimepicker({
 			timeOnly: (self.attr('data-date_format') == undefined),
