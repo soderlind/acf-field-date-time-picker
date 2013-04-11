@@ -28,32 +28,46 @@
         </ul>
       </header>
       <section>
-        <h3>Welcome to GitHub Pages.</h3>
+        <h1>ACF  Date and Time Picker Field</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>Adds a 'Date and Time Picker' field type for the <a href="http://wordpress.org/extend/plugins/advanced-custom-fields/">Advanced Custom Fields</a> WordPress plugin.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<hr><h3>Overview</h3>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>This is an add-on for the Advanced Custom Fields WordPress plugin, that allows you to add a Date and Time Picker field type.</p>
 
-<h3>Designer Templates</h3>
+<h3>Compatibility</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>This add-on will work with:</p>
 
-<h3>Rather Drive Stick?</h3>
+<ul>
+<li>Advanced Custom Fields version 4 and up</li>
+<li>Advanced Custom Fields version 3 and bellow</li>
+</ul><h3>Installation</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>This add-on can be treated as both a WP plugin and a theme include.</p>
 
-<h3>Authors and Contributors</h3>
+<p><strong>Install as Plugin</strong></p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<ol>
+<li>Copy the 'acf-date_time_picker' folder into your plugins folder</li>
+<li>Activate the plugin via the Plugins admin page</li>
+</ol><p><strong>Include within theme</strong></p>
 
-<h3>Support or Contact</h3>
+<ol>
+<li> Copy the 'acf-date_time_picker' folder into your theme folder (can use sub folders). You can place the folder anywhere inside the 'wp-content' directory</li>
+<li> Edit your functions.php file and add the code below (Make sure the path is correct to include the acf-date_time_picker.php file)</li>
+</ol><div class="highlight"><pre><span class="nx">add_action</span><span class="p">(</span><span class="s1">'acf/register_fields'</span><span class="p">,</span> <span class="s1">'my_register_fields'</span><span class="p">);</span>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<span class="k">function</span> <span class="nf">my_register_fields</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">include_once</span><span class="p">(</span><span class="s1">'acf-date_time_picker/acf-date_time_picker.php'</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>More Information</h3>
+
+<p><a href="http://soderlind.no/time-picker-field-for-advanced-custom-fields/">http://soderlind.no/time-picker-field-for-advanced-custom-fields/</a></p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/soderlind">soderlind</a></p>
