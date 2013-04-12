@@ -12,8 +12,8 @@ This is an add-on for the Advanced Custom Fields WordPress plugin, that allows y
 
 This add-on will work with:
 
-* version 4 and up
-* version 3 and bellow
+* Advanced Custom Fields version 4 and up
+* Advanced Custom Fields version 3 and bellow
 
 
 ### Installation
@@ -40,6 +40,53 @@ function my_register_fields()
 }
 ```
 
+### Frequently Asked Questions 
+
+
+**How do I set the date and time format?**
+
+To set  the date and time format when you create the field, you have to create a string using the letters below.
+
+#### Date format 
+
+`
+d    day of month (no leading zero)
+dd   day of month (two digit)
+o    day of the year (no leading zeros)
+oo   day of the year (three digit)
+D    day name short
+DD   day name long
+m    month of year (no leading zero)
+mm   month of year (two digit)
+M    month name short
+MM   month name long
+y    year (two digit)
+yy   year (four digit)
+`
+
+#### Time format 
+
+`
+H    Hour with no leading 0 (24 hour)
+HH   Hour with leading 0 (24 hour)
+h    Hour with no leading 0 (12 hour)
+hh   Hour with leading 0 (12 hour)
+m    Minute with no leading 0
+mm   Minute with leading 0
+s    Second with no leading 0
+ss   Second with leading 0
+l    Milliseconds always with leading 0
+t    a or p for AM/PM
+T    A or P for AM/PM
+tt   am or pm for AM/PM
+TT   AM or PM for AM/PM
+`
+
+#### Examples
+
+* `yy-mm-dd`: 2013-04-12
+* `HH:mm`: 24 hour clock, with a leading 0 for hour and minute
+* `h:m tt`: 12 hour clock with am/pm, no leading 0 
 
 ### More Information
 
