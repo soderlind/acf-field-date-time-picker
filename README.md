@@ -49,38 +49,38 @@ To set  the date and time format when you create the field, you have to create a
 
 #### Date format 
 
-`
-d    day of month (no leading zero)
-dd   day of month (two digit)
-o    day of the year (no leading zeros)
-oo   day of the year (three digit)
-D    day name short
-DD   day name long
-m    month of year (no leading zero)
-mm   month of year (two digit)
-M    month name short
-MM   month name long
-y    year (two digit)
-yy   year (four digit)
-`
+
+		d    day of month (no leading zero)
+		dd   day of month (two digit)
+		o    day of the year (no leading zeros)
+		oo   day of the year (three digit)
+		D    day name short
+		DD   day name long
+		m    month of year (no leading zero)
+		mm   month of year (two digit)
+		M    month name short
+		MM   month name long
+		y    year (two digit)
+		yy   year (four digit)
+
 
 #### Time format 
 
-`
-H    Hour with no leading 0 (24 hour)
-HH   Hour with leading 0 (24 hour)
-h    Hour with no leading 0 (12 hour)
-hh   Hour with leading 0 (12 hour)
-m    Minute with no leading 0
-mm   Minute with leading 0
-s    Second with no leading 0
-ss   Second with leading 0
-l    Milliseconds always with leading 0
-t    a or p for AM/PM
-T    A or P for AM/PM
-tt   am or pm for AM/PM
-TT   AM or PM for AM/PM
-`
+
+		H    Hour with no leading 0 (24 hour)
+		HH   Hour with leading 0 (24 hour)
+		h    Hour with no leading 0 (12 hour)
+		hh   Hour with leading 0 (12 hour)
+		m    Minute with no leading 0
+		mm   Minute with leading 0
+		s    Second with no leading 0
+		ss   Second with leading 0
+		l    Milliseconds always with leading 0
+		t    a or p for AM/PM
+		T    A or P for AM/PM
+		tt   am or pm for AM/PM
+		TT   AM or PM for AM/PM
+
 
 #### Examples
 
