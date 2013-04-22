@@ -40,7 +40,7 @@ class acf_field_date_time_picker extends acf_Field {
 		$this->settings = array(
 			'path'      => $this->helpers_get_path( __FILE__ )
 			, 'dir'     => $this->helpers_get_dir( __FILE__ )
-			, 'version' => '2.0.4'
+			, 'version' => '2.0.5'
 		);	
 	}
 
@@ -255,7 +255,7 @@ class acf_field_date_time_picker extends acf_Field {
 		$has_locale = false;
 		$js_locale = $this->get_js_locale(get_locale());
 		wp_enqueue_script( 'jquery-ui-timepicker', $this->settings['dir'] . 'js/jquery-ui-timepicker-addon.js', array(
-				'jquery-ui-datepicker',
+				'acf-datepicker',
 				'jquery-ui-slider'
 		), $this->settings['version'], true );	
 
