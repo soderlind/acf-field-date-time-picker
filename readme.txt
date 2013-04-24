@@ -4,7 +4,7 @@ Donate link: http://soderlind.no/donate/
 Tags: acf, custom field,datepicker,timepicker
 Requires at least: 3.4
 Tested up to: 3.5.1
-Stable tag: 2.0.5
+Stable tag: 2.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,6 +13,8 @@ Date and Time Picker field for Advanced Custom Fields
 == Description ==
 
 This is an add-on for the [Advanced Custom Fields](http://wordpress.org/extend/plugins/advanced-custom-fields/) WordPress plugin, that allows you to add a Date and Time Picker field type.
+
+[youtube http://www.youtube.com/watch?v=Mumx4HGOljQ]
 
 = Compatibility =
 
@@ -95,13 +97,21 @@ tt   am or pm for AM/PM
 TT   AM or PM for AM/PM
 `
 
+
 = Examples =
 
 * `yy-mm-dd`: 2013-04-12
 * `HH:mm`: 24 hour clock, with a leading 0 for hour and minute
 * `h:m tt`: 12 hour clock with am/pm, no leading 0 
 
+**How do I format the date and time when I want to use it in my theme?**
+
+The Date and Time Picker field is saved as an UNIX timestamp. Use the PHP [date](http://php.net/manual/en/function.date.php) function when you use it in your theme.
+
 == Changelog ==
+= 2.0.6 = 
+* Changed how the Date and Time Picker field is triggered when ACF adds a new Date and Time Picker field to the DOM
+* Saves the Date and Time Picker field as an UNIX timestamp to MySQL. Use the PHP [date](http://php.net/manual/en/function.date.php) function  when you use it in your theme.
 = 2.0.5 =
 * When enqueuing JavaScripts, replaced dependecy of jquery-ui-datepicker with acf-datepicker
 = 2.0.4 =

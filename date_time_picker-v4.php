@@ -45,7 +45,7 @@ class acf_field_date_time_picker extends acf_field
 		$this->settings = array(
 			'path'      => apply_filters('acf/helpers/get_path', __FILE__)
 			, 'dir'     => apply_filters('acf/helpers/get_dir', __FILE__)
-			, 'version' => '2.0.5'
+			, 'version' => '2.0.6'
 		);
 
 	}
@@ -155,36 +155,8 @@ class acf_field_date_time_picker extends acf_field
 					) );
 				?>
 			</td>
-		</tr>
-		<?php /* ?>
-		<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_week_number">
-			<td class="label">
-				<label for=""><?php _e( "Time Picker language?", $this->domain ); ?></label>
-			</td>
-			<td>
-				<?php
-				$dir_path = $this->settings['path'] . 'js/localization/';
-				$exclude_list = array(".", "..");
-				$languages = preg_filter("/jquery-ui-timepicker-(.*?)\.js/","$1",array_diff(scandir($dir_path), $exclude_list));				
-				$locales["en"] = "en";
-				foreach ($languages as $k => $v) {
-					$locales[$v] = $v;
-				}
-				asort($locales);
-				$locales["unknown"] = 'Use: "lang/' . $this->domain . '-' . get_locale() . '.mo"';
-
-				do_action('acf/create_field', array(
-						'type'      => 'select'
-						, 'name'    => 'fields['.$key.'][language]'
-						, 'value'   => $field['language']
-						, 'choices' => $locales
-					) );
-				?>
-			</td>
 		</tr> 
-		<?php */?> 
 		<?php
-		
 	}
 
 
@@ -206,12 +178,92 @@ class acf_field_date_time_picker extends acf_field
 		extract( $field, EXTR_SKIP ); //Declare each item in $field as its own variable i.e.: $name, $value, $label, $time_format, $date_format and $show_week_number
 
 		if ( $show_date != 'true' ) {
-			echo '<input type="text" name="' . $name . '" class="time_picker" value="' . $value . '" data-picker="' . $picker . '" data-time_format="' . $time_format . '"  title="' . $label . '" />';
+			echo '<input type="text" value="' . $value . '" name="' . $name . '" class="ps_timepicker" value="" data-picker="' . $picker . '" data-time_format="' . $time_format . '"  title="' . $label . '" />';
 		} else {
-			echo '<input type="text" name="' . $name . '" class="time_picker" value="' . $value . '" data-picker="' . $picker . '" data-date_format="' . $date_format . '" data-time_format="' . $time_format . '" data-show_week_number="' . $show_week_number . '"  title="' . $label . '" />';
+			echo '<input type="text" value="' . $value . '" name="' . $name . '" class="ps_timepicker" value="" data-picker="' . $picker . '" data-date_format="' . $date_format . '" data-time_format="' . $time_format . '" data-show_week_number="' . $show_week_number . '"  title="' . $label . '" />';
 		}
 	}
 	
+/*
+	*  load_value()
+	*
+	*  This filter is appied to the $value after it is loaded from the db
+	*
+	*  @type	filter
+	*  @since	3.6
+	*  @date	23/01/13
+	*
+	*  @param	$value - the value found in the database
+	*  @param	$post_id - the $post_id from which the value was loaded from
+	*  @param	$field - the field array holding all the field options
+	*
+	*  @return	$value - the value to be saved in te database
+	*/
+
+	function load_value( $value, $post_id, $field ) {
+		if ($value != '') {
+			if ( $field['show_date'] == 'true') {
+				 $value = date(sprintf("%s %s",$this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $value);
+			} else {
+				 $value = date(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $value);
+			}
+		}
+		return $value;
+	}
+
+
+	function js_to_php_dateformat($date_format) { 
+	    $chars = array( 
+	        // Day
+	        'dd' => 'd', 'd' => 'j', 'DD' => 'l', 'o' => 'z',
+	        // Month 
+	        'mm' => 'm', 'm' => 'n', 'MM' => 'F', 'M' => 'M', 
+	        // Year 
+	        'yy' => 'Y', 'y' => 'y', 
+	    ); 
+
+	    return strtr((string)$date_format, $chars); 
+	}
+
+
+    function js_to_php_timeformat($time_format) {
+ 
+	    $chars = array(
+		    //hour
+		    'HH' => 'H', 'H'  => 'G', 'hh' => 'h' , 'h'  => 'g',
+		    //minute
+		    'mm' => 'i', 'm'  => 'i',
+		    //second
+		    'ss' => 's', 's' => 's',
+		    //am/pm
+		    'TT' => 'A', 'T' => 'A', 'tt' => 'a', 't' => 'a'
+	    );
+
+	    return strtr((string)$time_format, $chars); 
+	}
+
+
+	/*
+	*  update_value()
+	*
+	*  This filter is appied to the $value before it is updated in the db
+	*
+	*  @type	filter
+	*  @since	3.6
+	*  @date	23/01/13
+	*
+	*  @param	$value - the value which will be saved in the database
+	*  @param	$post_id - the $post_id of which the value will be saved
+	*  @param	$field - the field array holding all the field options
+	*
+	*  @return	$value - the modified value
+	*/
+
+	function update_value( $value, $post_id, $field ) {
+
+		$value = ($value != '') ? strtotime($value) : '';
+		return $value;
+	}
 	
 
 
@@ -284,7 +336,9 @@ class acf_field_date_time_picker extends acf_field
 		$l10n = ( isset( $timepicker_locale ) ) ? array_merge( $timepicker_wp_locale, $timepicker_locale ) : $timepicker_wp_locale;
 		wp_localize_script( 'timepicker', 'timepicker_objectL10n', $l10n );
 
-		wp_enqueue_style('jquery-style', $this->settings['dir'] . 'css/jquery-ui.css'); 
+		wp_enqueue_style('jquery-style', $this->settings['dir'] . 'css/jquery-ui.css',array(
+			'acf-datepicker'
+		),$this->settings['version']); 
 		wp_enqueue_style('timepicker',  $this->settings['dir'] . 'css/jquery-ui-timepicker-addon.css',array(
 			'jquery-style'
 		),$this->settings['version']);

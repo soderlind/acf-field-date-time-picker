@@ -40,7 +40,7 @@ class acf_field_date_time_picker extends acf_Field {
 		$this->settings = array(
 			'path'      => $this->helpers_get_path( __FILE__ )
 			, 'dir'     => $this->helpers_get_dir( __FILE__ )
-			, 'version' => '2.0.5'
+			, 'version' => '2.0.6'
 		);	
 	}
 
@@ -236,6 +236,88 @@ class acf_field_date_time_picker extends acf_Field {
 		}
 	}
 
+
+	/*--------------------------------------------------------------------------------------
+	*
+	*	update_value
+	*	- this function is called when saving a post object that your field is assigned to.
+	*	the function will pass through the 3 parameters for you to use.
+	*
+	*	@params
+	*	- $post_id (int) - usefull if you need to save extra data or manipulate the current
+	*	post object
+	*	- $field (array) - usefull if you need to manipulate the $value based on a field option
+	*	- $value (mixed) - the new value of your field.
+	*
+	*	@author Elliot Condon
+	*	@since 2.2.0
+	* 
+	*-------------------------------------------------------------------------------------*/
+
+	function update_value($post_id, $field, $value) {
+		$value = ($value != '') ? strtotime($value) : '';
+		parent::update_value($post_id, $field, $value);
+	}
+
+
+	/*--------------------------------------------------------------------------------------
+	*
+	*	get_value
+	*	- called from the edit page to get the value of your field. This function is useful
+	*	if your field needs to collect extra data for your create_field() function.
+	*
+	*	@params
+	*	- $post_id (int) - the post ID which your value is attached to
+	*	- $field (array) - the field object.
+	*
+	*	@author Elliot Condon
+	*	@since 2.2.0
+	* 
+	*-------------------------------------------------------------------------------------*/
+
+	function get_value($post_id, $field){
+		$value = parent::get_value($post_id, $field);
+
+		if ($value != '') {
+			if ( $field['show_date'] == 'true') {
+				 $value = date(sprintf("%s %s",$this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $value);
+			} else {
+				 $value = date(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $value);
+			}
+		}
+
+		return $value;		
+	}
+
+	function js_to_php_dateformat($date_format) { 
+	    $chars = array( 
+	        // Day
+	        'dd' => 'd', 'd' => 'j', 'DD' => 'l', 'o' => 'z',
+	        // Month 
+	        'mm' => 'm', 'm' => 'n', 'MM' => 'F', 'M' => 'M', 
+	        // Year 
+	        'yy' => 'Y', 'y' => 'y', 
+	    ); 
+
+	    return strtr((string)$date_format, $chars); 
+	}
+
+
+    function js_to_php_timeformat($time_format) {
+ 
+	    $chars = array(
+		    //hour
+		    'HH' => 'H', 'H'  => 'G', 'hh' => 'h' , 'h'  => 'g',
+		    //minute
+		    'mm' => 'i', 'm'  => 'i',
+		    //second
+		    'ss' => 's', 's' => 's',
+		    //am/pm
+		    'TT' => 'A', 'T' => 'A', 'tt' => 'a', 't' => 'a'
+	    );
+
+	    return strtr((string)$time_format, $chars); 
+	}
 
 	/*--------------------------------------------------------------------------------------
 	*
