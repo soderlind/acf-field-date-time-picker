@@ -40,7 +40,7 @@ class acf_field_date_time_picker extends acf_Field {
 		$this->settings = array(
 			'path'      => $this->helpers_get_path( __FILE__ )
 			, 'dir'     => $this->helpers_get_dir( __FILE__ )
-			, 'version' => '2.0.6'
+			, 'version' => '2.0.7'
 		);	
 	}
 
@@ -278,7 +278,7 @@ class acf_field_date_time_picker extends acf_Field {
 	function get_value($post_id, $field){
 		$value = parent::get_value($post_id, $field);
 
-		if ($value != '') {
+		if ($value != '' && $this->isValidTimeStamp($value)) {
 			if ( $field['show_date'] == 'true') {
 				 $value = date(sprintf("%s %s",$this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $value);
 			} else {
@@ -317,6 +317,12 @@ class acf_field_date_time_picker extends acf_Field {
 	    );
 
 	    return strtr((string)$time_format, $chars); 
+	}
+
+	function isValidTimeStamp($timestamp) { //from http://stackoverflow.com/a/2524761/1434155
+	    return ((string) (int) $timestamp === $timestamp) 
+	        && ($timestamp <= PHP_INT_MAX)
+	        && ($timestamp >= ~PHP_INT_MAX);
 	}
 
 	/*--------------------------------------------------------------------------------------
