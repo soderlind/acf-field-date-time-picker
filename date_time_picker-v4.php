@@ -25,14 +25,14 @@ class acf_field_date_time_picker extends acf_field
 		$this->category = __("jQuery", $this->domain); // Basic, Content, Choice, etc
 		$this->domain = 'acf-date_time_picker';
 		$this->defaults = array(
-			'value'              => ''
-			, 'label'            => __( 'Choose Time', $this->domain )
-			, 'time_format'      => 'hh:mm'
-			, 'show_date'        => true
-			, 'date_format'      => 'mm/dd/yy'
-			, 'show_week_number' => false
-			, 'picker'           => 'slider'
-			, 'language'         => 'en'
+			'value'               => ''
+			, 'label'             => __( 'Choose Time', $this->domain )
+			, 'time_format'       => 'hh:mm'
+			, 'show_date'         => 'true'
+			, 'date_format'       => 'yy-mm-dd'
+			, 'show_week_number'  => 'false'
+			, 'picker'            => 'slider'
+			, 'save_as_timestamp' => 'true'
 		);
 
 		
@@ -45,7 +45,7 @@ class acf_field_date_time_picker extends acf_field
 		$this->settings = array(
 			'path'      => apply_filters('acf/helpers/get_path', __FILE__)
 			, 'dir'     => apply_filters('acf/helpers/get_dir', __FILE__)
-			, 'version' => '2.0.7'
+			, 'version' => '2.0.8'
 		);
 
 	}
@@ -156,6 +156,26 @@ class acf_field_date_time_picker extends acf_field
 				?>
 			</td>
 		</tr> 
+		<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_week_number">
+			<td class="label">
+				<label for=""><?php _e( "Save as timestamp?", $this->domain ); ?></label>
+				<p class="description"><?php printf( __( "Most users should leave this untouched, only set it to \"No\" if you need a date and time format not supported by <a href=\"%s\" target=\"_blank\">strtotime</a>", $this->domain ), "http://php.net/manual/en/function.strtotime.php" );?></p>
+			</td>
+			<td>
+				<?php
+				do_action('acf/create_field', array(
+						'type'      => 'radio'
+						, 'name'    => 'fields['.$key.'][save_as_timestamp]'
+						, 'value'   => $field['save_as_timestamp']
+						, 'layout'  => 'horizontal'
+						, 'choices' => array(
+								'true'    => __( 'Yes', $this->domain )
+								, 'false' => __( 'No', $this->domain )
+						)
+					) );
+				?>
+			</td>
+		</tr>
 		<?php
 	}
 
@@ -201,9 +221,11 @@ class acf_field_date_time_picker extends acf_field
 	*/
 
 	function load_value( $value, $post_id, $field ) {
-		if ($value != '' && $this->isValidTimeStamp($value)) {
+		$field = array_merge($this->defaults, $field);
+		if ($value != '' && $field['save_as_timestamp'] == 'true' && $this->isValidTimeStamp($value)) {
 			if ( $field['show_date'] == 'true') {
 				 $value = date(sprintf("%s %s",$this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $value);
+				 //$value = sprintf("%s %s",$this->js_day_to_strftimeformat($field['date_format']),$this->js_time_to_strftimeformat($field['time_format']));
 			} else {
 				 $value = date(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $value);
 			}
@@ -215,7 +237,7 @@ class acf_field_date_time_picker extends acf_field
 	function js_to_php_dateformat($date_format) { 
 	    $chars = array( 
 	        // Day
-	        'dd' => 'd', 'd' => 'j', 'DD' => 'l', 'o' => 'z',
+	        'dd' => 'd', 'd' => 'j', 'DD' => 'l','D' => 'D', 'o' => 'z',
 	        // Month 
 	        'mm' => 'm', 'm' => 'n', 'MM' => 'F', 'M' => 'M', 
 	        // Year 
@@ -242,7 +264,7 @@ class acf_field_date_time_picker extends acf_field
 	    return strtr((string)$time_format, $chars); 
 	}
 
-	
+
 	function isValidTimeStamp($timestamp) { //from http://stackoverflow.com/a/2524761/1434155
 	    return ((string) (int) $timestamp === $timestamp) 
 	        && ($timestamp <= PHP_INT_MAX)
@@ -265,8 +287,15 @@ class acf_field_date_time_picker extends acf_field
 	*/
 
 	function update_value( $value, $post_id, $field ) {
-
-		$value = ($value != '') ? strtotime($value) : '';
+		$field = array_merge($this->defaults, $field);
+		if ($value != '' && $field['save_as_timestamp'] == 'true') {
+			if ( $field['show_date'] == 'true') {
+				 $date = DateTime::createFromFormat(sprintf("%s %s",$this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $value);
+			} else {
+				 $date = DateTime::createFromFormat(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $value);
+			}
+			return $date->getTimestamp();
+		}
 		return $value;
 	}
 	
