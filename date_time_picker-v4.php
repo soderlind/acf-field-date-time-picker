@@ -25,7 +25,7 @@ class acf_field_date_time_picker extends acf_field
 		$this->category = __("jQuery", $this->domain); // Basic, Content, Choice, etc
 		$this->domain = 'acf-date_time_picker';
 		$this->defaults = array(
-			'value'               => ''
+			'default_value'       => ''
 			, 'label'             => __( 'Choose Time', $this->domain )
 			, 'time_format'       => 'hh:mm'
 			, 'show_date'         => 'true'
