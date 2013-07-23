@@ -194,7 +194,7 @@ class acf_field_date_time_picker extends acf_field
 	*/
 	
 	function create_field( $field ) {
-		$field = array_merge( $this->defaults, $field );
+		$field = wp_parse_args( $this->defaults, $field );
 		extract( $field, EXTR_SKIP ); //Declare each item in $field as its own variable i.e.: $name, $value, $label, $time_format, $date_format and $show_week_number
 
 		if ( $show_date != 'true' ) {
