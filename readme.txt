@@ -3,8 +3,8 @@ Contributors: PerS
 Donate link: http://soderlind.no/donate/
 Tags: acf, custom field,datepicker,timepicker
 Requires at least: 3.4
-Tested up to: 3.5.1
-Stable tag: 2.0.8
+Tested up to: 3.6
+Stable tag: 2.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,6 +110,10 @@ TT   AM or PM for AM/PM
 The Date and Time Picker field is saved as an UNIX timestamp. Use the PHP [date](http://php.net/manual/en/function.date.php) function when you use it in your theme.
 
 == Changelog ==
+= 2.0.9 =
+* Thanks to [flahertydaf](http://support.advancedcustomfields.com/forums/topic/custom-fields-get-emptied-when-publishing/page/2/#post-2325), the plugin in now working with the latest ACF version
+* Replaced DateTime::createFromFormat (PHP 5 >= 5.3.0), with strtotime
+* minor bugfixes
 = 2.0.8 = 
 * Adds option to store the date and time field as a UNIX timestamp or not. 
 = 2.0.7 =

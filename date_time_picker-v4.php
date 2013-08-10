@@ -7,7 +7,7 @@ class acf_field_date_time_picker extends acf_field
 		, $defaults // will hold default field options
 		, $domain   // holds the language domain
 		, $lang;
-		
+
 	/*
 	*  __construct
 	*
@@ -16,7 +16,7 @@ class acf_field_date_time_picker extends acf_field
 	*  @since	3.6
 	*  @date	23/01/13
 	*/
-	
+
 	function __construct()
 	{
 		// vars
@@ -27,30 +27,30 @@ class acf_field_date_time_picker extends acf_field
 		$this->defaults = array(
 			'value'               => ''
 			, 'label'             => __( 'Choose Time', $this->domain )
-			, 'time_format'       => 'hh:mm'
+			, 'time_format'       => 'h:mm tt'
 			, 'show_date'         => 'true'
-			, 'date_format'       => 'yy-mm-dd'
+			, 'date_format'       => 'm/d/y'
 			, 'show_week_number'  => 'false'
 			, 'picker'            => 'slider'
 			, 'save_as_timestamp' => 'true'
 		);
 
-		
-		
+
+
 		// do not delete!
     	parent::__construct();
-    	
-    	
+
+
     	// settings
 		$this->settings = array(
 			'path'      => apply_filters('acf/helpers/get_path', __FILE__)
 			, 'dir'     => apply_filters('acf/helpers/get_dir', __FILE__)
-			, 'version' => '2.0.8'
+			, 'version' => '2.0.9'
 		);
 
 	}
-	
-	
+
+
 	/*
 	*  create_options()
 	*
@@ -63,7 +63,7 @@ class acf_field_date_time_picker extends acf_field
 	*
 	*  @param	$field	- an array holding all the field's data
 	*/
-	
+
 	function create_options( $field )
 	{
 		$field = array_merge($this->defaults, $field);
@@ -100,6 +100,22 @@ class acf_field_date_time_picker extends acf_field
 						, 'name'  => 'fields[' . $key . '][date_format]'
 						, 'value' => $field['date_format']
 					) );
+				/*
+				do_action('acf/create_field', array(
+					'type'	=>	'select',
+					'name'	=>	'fields['.$key.'][date_format]',
+					'value'	=>	$field['date_format'],
+					'choices' => array(
+						  'm/d/y'    => 'm/d/y (5/27/13)'
+						, 'mm/dd/yy' => 'mm/dd/yy (05/27/2013)'
+						, 'yy/mm/dd' => 'yy/mm/dd (2013/05/27)'
+						, 'yy-mm-dd' => 'yy-mm-dd (2013-05-27)'
+						, 'dd.mm.yy' => 'dd.mm.yy (27.05.2013)'
+						, 'dd-mm-yy' => 'dd-mm-yy (27-05-2013)'
+						, 'yy-M-dd'  => 'yy-M-dd (2013-May-27)'
+					)
+				));
+				*/
 				?>
 			</td>
 		</tr>
@@ -115,6 +131,19 @@ class acf_field_date_time_picker extends acf_field
 						, 'name'  => 'fields[' . $key . '][time_format]'
 						, 'value' => $field['time_format']
 					) );
+				/*
+				do_action('acf/create_field', array(
+					'type'	=>	'select',
+					'name'	=>	'fields['.$key.'][time_format]',
+					'value'	=>	$field['time_format'],
+					'choices' => array(
+						'h:mm tt' => 'h:mm tt (9:59 am)'
+						, 'hh:mm tt' => 'hh:mm tt (09:59 am)'
+						, 'H:mm' => 'H:mm (9:59)'
+						, 'HH:mm' => 'HH:mm (09:59)'
+					)
+				));
+				*/
 				?>
 		   </td>
 		</tr>
@@ -155,7 +184,7 @@ class acf_field_date_time_picker extends acf_field
 					) );
 				?>
 			</td>
-		</tr> 
+		</tr>
 		<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_week_number">
 			<td class="label">
 				<label for=""><?php _e( "Save as timestamp?", $this->domain ); ?></label>
@@ -192,18 +221,18 @@ class acf_field_date_time_picker extends acf_field
 	*  @since	3.6
 	*  @date	23/01/13
 	*/
-	
-	function create_field( $field ) {
-		$field = array_merge( $this->defaults, $field );
-		extract( $field, EXTR_SKIP ); //Declare each item in $field as its own variable i.e.: $name, $value, $label, $time_format, $date_format and $show_week_number
 
-		if ( $show_date != 'true' ) {
-			echo '<input type="text" value="' . $value . '" name="' . $name . '" class="ps_timepicker" value="" data-picker="' . $picker . '" data-time_format="' . $time_format . '"  title="' . $label . '" />';
+	function create_field( $field ) {
+
+		if ( $field['show_date'] !== 'true' ) {
+			echo '<input type="text" value="' . $field['value'] . '" name="' . $field['name'] . '" class="ps_timepicker" value="" data-picker="' . $field['picker'] . '" data-time_format="' . $field['time_format'] . '"  title="' . $field['label'] . '" />';
 		} else {
-			echo '<input type="text" value="' . $value . '" name="' . $name . '" class="ps_timepicker" value="" data-picker="' . $picker . '" data-date_format="' . $date_format . '" data-time_format="' . $time_format . '" data-show_week_number="' . $show_week_number . '"  title="' . $label . '" />';
+			echo '<input type="text" value="' . $field['value'] . '" name="' . $field['name'] . '" class="ps_timepicker" value="" data-picker="' . $field['picker'] . '" data-date_format="' . $field['date_format'] . '" data-time_format="' . $field['time_format'] . '" data-show_week_number="' . $field['show_week_number'] . '"  title="' . $field['label'] . '" />';
 		}
 	}
-	
+
+	function load_field_defaults( $field ) { return $field; }
+
 /*
 	*  load_value()
 	*
@@ -224,32 +253,31 @@ class acf_field_date_time_picker extends acf_field
 		$field = array_merge($this->defaults, $field);
 		if ($value != '' && $field['save_as_timestamp'] == 'true' && $this->isValidTimeStamp($value)) {
 			if ( $field['show_date'] == 'true') {
-				 $value = date(sprintf("%s %s",$this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $value);
-				 //$value = sprintf("%s %s",$this->js_day_to_strftimeformat($field['date_format']),$this->js_time_to_strftimeformat($field['time_format']));
+				 $value = date_i18n(sprintf("%s %s",$this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $value);
 			} else {
-				 $value = date(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $value);
+				 $value = date_i18n(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $value);
 			}
 		}
 		return $value;
 	}
 
 
-	function js_to_php_dateformat($date_format) { 
-	    $chars = array( 
+	function js_to_php_dateformat($date_format) {
+	    $chars = array(
 	        // Day
 	        'dd' => 'd', 'd' => 'j', 'DD' => 'l','D' => 'D', 'o' => 'z',
-	        // Month 
-	        'mm' => 'm', 'm' => 'n', 'MM' => 'F', 'M' => 'M', 
-	        // Year 
-	        'yy' => 'Y', 'y' => 'y', 
-	    ); 
+	        // Month
+	        'mm' => 'm', 'm' => 'n', 'MM' => 'F', 'M' => 'M',
+	        // Year
+	        'yy' => 'Y', 'y' => 'y',
+	    );
 
-	    return strtr((string)$date_format, $chars); 
+	    return strtr((string)$date_format, $chars);
 	}
 
 
     function js_to_php_timeformat($time_format) {
- 
+
 	    $chars = array(
 		    //hour
 		    'HH' => 'H', 'H'  => 'G', 'hh' => 'h' , 'h'  => 'g',
@@ -261,12 +289,12 @@ class acf_field_date_time_picker extends acf_field
 		    'TT' => 'A', 'T' => 'A', 'tt' => 'a', 't' => 'a'
 	    );
 
-	    return strtr((string)$time_format, $chars); 
+	    return strtr((string)$time_format, $chars);
 	}
 
 
 	function isValidTimeStamp($timestamp) { //from http://stackoverflow.com/a/2524761/1434155
-	    return ((string) (int) $timestamp === $timestamp) 
+	    return ((string) (int) $timestamp === $timestamp)
 	        && ($timestamp <= PHP_INT_MAX)
 	        && ($timestamp >= ~PHP_INT_MAX);
 	}
@@ -289,16 +317,11 @@ class acf_field_date_time_picker extends acf_field
 	function update_value( $value, $post_id, $field ) {
 		$field = array_merge($this->defaults, $field);
 		if ($value != '' && $field['save_as_timestamp'] == 'true') {
-			if ( $field['show_date'] == 'true') {
-				 $date = DateTime::createFromFormat(sprintf("%s %s",$this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $value);
-			} else {
-				 $date = DateTime::createFromFormat(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $value);
-			}
-			return $date->getTimestamp();
+			$value = strtotime( $value );
 		}
 		return $value;
 	}
-	
+
 
 
 	/*
@@ -323,7 +346,7 @@ class acf_field_date_time_picker extends acf_field
 		wp_enqueue_script( 'jquery-ui-timepicker', $this->settings['dir'] . 'js/jquery-ui-timepicker-addon.js', array(
 				'acf-datepicker',
 				'jquery-ui-slider'
-		), $this->settings['version'], true );	
+		), $this->settings['version'], true );
 
 		if ( file_exists(  $this->settings['path'] . '/js/localization/jquery-ui-timepicker-' . $js_locale . '.js' ) ) {
 			wp_enqueue_script( 'timepicker-localization', $this->settings['dir'] . 'js/localization/jquery-ui-timepicker-' . $js_locale . '.js', array(
@@ -337,7 +360,7 @@ class acf_field_date_time_picker extends acf_field
 			wp_enqueue_script( 'timepicker', $this->settings['dir'] . 'js/timepicker.js', array(
 				'jquery-ui-timepicker'
 			), $this->settings['version'], true );
-		} 
+		}
 
 		if ( ! $has_locale && $js_locale != 'en' ) {
 			$timepicker_locale = array(
@@ -372,7 +395,7 @@ class acf_field_date_time_picker extends acf_field
 
 		wp_enqueue_style('jquery-style', $this->settings['dir'] . 'css/jquery-ui.css',array(
 			'acf-datepicker'
-		),$this->settings['version']); 
+		),$this->settings['version']);
 		wp_enqueue_style('timepicker',  $this->settings['dir'] . 'css/jquery-ui-timepicker-addon.css',array(
 			'jquery-style'
 		),$this->settings['version']);
@@ -390,11 +413,11 @@ class acf_field_date_time_picker extends acf_field
 
 		return $NewArray;
 	}
-	
+
 	function get_js_locale($locale) {
 		$dir_path = $this->settings['path'] . 'js/localization/';
 		$exclude_list = array(".", "..");
-		$languages = $this->ps_preg_filter("/jquery-ui-timepicker-(.*?)\.js/","$1",array_diff(scandir($dir_path), $exclude_list));				
+		$languages = $this->ps_preg_filter("/jquery-ui-timepicker-(.*?)\.js/","$1",array_diff(scandir($dir_path), $exclude_list));
 
 		$locale = strtolower(str_replace("_", "-", $locale));
 
