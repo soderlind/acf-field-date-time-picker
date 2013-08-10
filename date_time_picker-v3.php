@@ -41,7 +41,7 @@ class acf_field_date_time_picker extends acf_Field {
 		$this->settings = array(
 			'path'      => $this->helpers_get_path( __FILE__ )
 			, 'dir'     => $this->helpers_get_dir( __FILE__ )
-			, 'version' => '2.0.8'
+			, 'version' => '2.0.9'
 		);	
 	}
 
@@ -247,12 +247,11 @@ class acf_field_date_time_picker extends acf_Field {
 
 	function create_field( $field ) {
 		$field = array_merge( $this->defaults, $field );
-		extract( $field, EXTR_SKIP ); //Declare each item in $field as its own variable i.e.: $name, $value, $label, $time_format, $date_format and $show_week_number
 
-		if ( $show_date != 'true' ) {
-			echo '<input type="text" name="' . $name . '" class="time_picker" value="' . $value . '" data-picker="' . $picker . '" data-time_format="' . $time_format . '"  title="' . $label . '" />';
+		if ( $field['show_date'] != 'true' ) {
+			echo '<input type="text" value="' . $field['value'] . '" name="' . $field['name'] . '" class="ps_timepicker" value="" data-picker="' . $field['picker'] . '" data-time_format="' . $field['time_format'] . '"  title="' . $field['label'] . '" />';
 		} else {
-			echo '<input type="text" name="' . $name . '" class="time_picker" value="' . $value . '" data-picker="' . $picker . '" data-date_format="' . $date_format . '" data-time_format="' . $time_format . '" data-show_week_number="' . $show_week_number . '"  title="' . $label . '" />';
+			echo '<input type="text" value="' . $field['value'] . '" name="' . $field['name'] . '" class="ps_timepicker" value="" data-picker="' . $field['picker'] . '" data-date_format="' . $field['date_format'] . '" data-time_format="' . $field['time_format'] . '" data-show_week_number="' . $field['show_week_number'] . '"  title="' . $field['label'] . '" />';
 		}
 	}
 
