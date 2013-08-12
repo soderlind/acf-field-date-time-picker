@@ -28,7 +28,6 @@ class acf_field_date_time_picker extends acf_Field {
 		$this->title = __( 'Date and Time Picker' );
 		$this->domain = 'acf-date_time_picker';
 		$this->defaults = array(
-			'value'                => ''
 			, 'label'              => __( 'Choose Time', $this->domain )
 			, 'time_format'        => 'hh:mm'
 			, 'show_date'          => 'true'
@@ -435,11 +434,11 @@ class acf_field_date_time_picker extends acf_Field {
 
 		return $NewArray;
 	}
-	
+
 	function get_js_locale($locale) {
 		$dir_path = $this->settings['path'] . 'js/localization/';
 		$exclude_list = array(".", "..");
-		$languages = $this->ps_preg_filter("/jquery-ui-timepicker-(.*?)\.js/","$1",array_diff(scandir($dir_path), $exclude_list));				
+		$languages = $this->ps_preg_filter("/jquery-ui-timepicker-(.*?)\.js/","$1",array_diff(scandir($dir_path), $exclude_list));
 
 		$locale = strtolower(str_replace("_", "-", $locale));
 

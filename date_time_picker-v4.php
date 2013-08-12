@@ -25,8 +25,7 @@ class acf_field_date_time_picker extends acf_field
 		$this->category = __("jQuery", $this->domain); // Basic, Content, Choice, etc
 		$this->domain = 'acf-date_time_picker';
 		$this->defaults = array(
-			'value'               => ''
-			, 'label'             => __( 'Choose Time', $this->domain )
+			 'label'             => __( 'Choose Time', $this->domain )
 			, 'time_format'       => 'h:mm tt'
 			, 'show_date'         => 'true'
 			, 'date_format'       => 'm/d/y'
@@ -231,7 +230,7 @@ class acf_field_date_time_picker extends acf_field
 		}
 	}
 
-	function load_field_defaults( $field ) { return $field; }
+	//function load_field_defaults( $field ) { return $field; }
 
 /*
 	*  load_value()
