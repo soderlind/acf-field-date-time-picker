@@ -35,13 +35,14 @@ class acf_field_date_time_picker extends acf_Field {
 			, 'show_week_number'   => 'false'
 			, 'picker'             => 'slider'
 			, 'save_as_timestamp'  => 'true'
+			, 'get_as_timestamp'   => 'false'
 		);
 
 		$this->settings = array(
 			'path'      => $this->helpers_get_path( __FILE__ )
 			, 'dir'     => $this->helpers_get_dir( __FILE__ )
 			, 'version' => '2.0.9'
-		);	
+		);
 	}
 
 
@@ -52,13 +53,13 @@ class acf_field_date_time_picker extends acf_Field {
     *  @since: 3.6
     *  @created: 30/01/13
     */
-    
+
     function helpers_get_path( $file ) {
         return trailingslashit(dirname($file));
     }
-    
-    
-    
+
+
+
     /*
     *  helpers_get_dir
     *
@@ -66,36 +67,36 @@ class acf_field_date_time_picker extends acf_Field {
     *  @since: 3.6
     *  @created: 30/01/13
     */
-    
+
     function helpers_get_dir( $file ) {
         $dir = trailingslashit(dirname($file));
         $count = 0;
-        
-        
+
+
         // sanitize for Win32 installs
-        $dir = str_replace('\\' ,'/', $dir); 
-        
-        
+        $dir = str_replace('\\' ,'/', $dir);
+
+
         // if file is in plugins folder
-        $wp_plugin_dir = str_replace('\\' ,'/', WP_PLUGIN_DIR); 
+        $wp_plugin_dir = str_replace('\\' ,'/', WP_PLUGIN_DIR);
         $dir = str_replace($wp_plugin_dir, WP_PLUGIN_URL, $dir, $count);
-        
-        
+
+
         if( $count < 1 )
         {
 	        // if file is in wp-content folder
-	        $wp_content_dir = str_replace('\\' ,'/', WP_CONTENT_DIR); 
+	        $wp_content_dir = str_replace('\\' ,'/', WP_CONTENT_DIR);
 	        $dir = str_replace($wp_content_dir, WP_CONTENT_URL, $dir, $count);
         }
-        
-        
+
+
         if( $count < 1 )
         {
 	        // if file is in ??? folder
-	        $wp_dir = str_replace('\\' ,'/', ABSPATH); 
+	        $wp_dir = str_replace('\\' ,'/', ABSPATH);
 	        $dir = str_replace($wp_dir, site_url('/'), $dir);
         }
-        
+
 
         return $dir;
     }
@@ -197,7 +198,7 @@ class acf_field_date_time_picker extends acf_Field {
 			<td>
 			<?php
 			$this->parent->create_field( array(
-				'type'       => 'radio' 
+				'type'       => 'radio'
 				, 'name'     => 'fields['.$key.'][picker]'
 				, 'value'    => $field['picker']
 				, 'layout'   => 'horizontal'
@@ -227,6 +228,26 @@ class acf_field_date_time_picker extends acf_Field {
 				)
 			) );
 			?>
+			</td>
+		</tr>
+		<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_week_number">
+			<td class="label">
+				<label for=""><?php _e( "Get field as a timestamp?", $this->domain ); ?></label>
+				<p class="description"><?php printf( __( "Most users should leave this untouched, only set it to \"Yes\" if you need get the  date and time field as a timestamp using  <a href=\"%s\" target=\"_blank\">the_field()</a> or <a href=\"%s\" target=\"_blank\">get_field()</a> ", $this->domain ), "http://www.advancedcustomfields.com/resources/functions/the_field/", "http://www.advancedcustomfields.com/resources/functions/get_field/" );?></p>
+			</td>
+			<td>
+				<?php
+				$this->parent->create_field( array(
+						'type'      => 'radio'
+						, 'name'    => 'fields['.$key.'][get_as_timestamp]'
+						, 'value'   => $field['get_as_timestamp']
+						, 'layout'  => 'horizontal'
+						, 'choices' => array(
+								'true'    => __( 'Yes', $this->domain )
+								, 'false' => __( 'No', $this->domain )
+						)
+					) );
+				?>
 			</td>
 		</tr>
 		<?php
@@ -269,7 +290,7 @@ class acf_field_date_time_picker extends acf_Field {
 	*
 	*	@author Elliot Condon
 	*	@since 2.2.0
-	* 
+	*
 	*-------------------------------------------------------------------------------------*/
 
 	function update_value($post_id, $field, $value) {
@@ -281,7 +302,7 @@ class acf_field_date_time_picker extends acf_Field {
 				 $date = DateTime::createFromFormat(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $value);
 			}
 			$value =  $date->getTimestamp();
-		} 
+		}
 
 		parent::update_value($post_id, $field, $value);
 	}
@@ -299,7 +320,7 @@ class acf_field_date_time_picker extends acf_Field {
 	*
 	*	@author Elliot Condon
 	*	@since 2.2.0
-	* 
+	*
 	*-------------------------------------------------------------------------------------*/
 
 	function get_value($post_id, $field){
@@ -314,25 +335,40 @@ class acf_field_date_time_picker extends acf_Field {
 			}
 		}
 
-		return $value;		
+		return $value;
 	}
 
-	function js_to_php_dateformat($date_format) { 
-	    $chars = array( 
+	function get_value_for_api($post_id, $field){
+		$field = array_merge($this->defaults, $field);
+		$value = parent::get_value($post_id, $field);
+
+		if ($value != '' && $field['save_as_timestamp'] == 'true' && $field['get_as_timestamp'] != 'true' && $this->isValidTimeStamp($value)) {
+			if ( $field['show_date'] == 'true') {
+				 $value = date(sprintf("%s %s",$this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $value);
+			} else {
+				 $value = date(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $value);
+			}
+		}
+
+		return $value;
+	}
+
+	function js_to_php_dateformat($date_format) {
+	    $chars = array(
 	        // Day
 	        'dd' => 'd', 'd' => 'j', 'DD' => 'l', 'D' => 'D', 'o' => 'z',
-	        // Month 
-	        'mm' => 'm', 'm' => 'n', 'MM' => 'F', 'M' => 'M', 
-	        // Year 
-	        'yy' => 'Y', 'y' => 'y', 
-	    ); 
+	        // Month
+	        'mm' => 'm', 'm' => 'n', 'MM' => 'F', 'M' => 'M',
+	        // Year
+	        'yy' => 'Y', 'y' => 'y',
+	    );
 
-	    return strtr((string)$date_format, $chars); 
+	    return strtr((string)$date_format, $chars);
 	}
 
 
     function js_to_php_timeformat($time_format) {
- 
+
 	    $chars = array(
 		    //hour
 		    'HH' => 'H', 'H'  => 'G', 'hh' => 'h' , 'h'  => 'g',
@@ -344,11 +380,11 @@ class acf_field_date_time_picker extends acf_Field {
 		    'TT' => 'A', 'T' => 'A', 'tt' => 'a', 't' => 'a'
 	    );
 
-	    return strtr((string)$time_format, $chars); 
+	    return strtr((string)$time_format, $chars);
 	}
 
 	function isValidTimeStamp($timestamp) { //from http://stackoverflow.com/a/2524761/1434155
-	    return ((string) (int) $timestamp === $timestamp) 
+	    return ((string) (int) $timestamp === $timestamp)
 	        && ($timestamp <= PHP_INT_MAX)
 	        && ($timestamp >= ~PHP_INT_MAX);
 	}
@@ -373,7 +409,7 @@ class acf_field_date_time_picker extends acf_Field {
 		wp_enqueue_script( 'jquery-ui-timepicker', $this->settings['dir'] . 'js/jquery-ui-timepicker-addon.js', array(
 				'acf-datepicker',
 				'jquery-ui-slider'
-		), $this->settings['version'], true );	
+		), $this->settings['version'], true );
 
 		if ( file_exists( dirname( __FILE__ ) . '/js/localization/jquery-ui-timepicker-' . $js_locale . '.js' ) ) {
 			wp_enqueue_script( 'timepicker-localization', $this->settings['dir'] . 'js/localization/jquery-ui-timepicker-' . $js_locale . '.js', array(
@@ -387,7 +423,7 @@ class acf_field_date_time_picker extends acf_Field {
 			wp_enqueue_script( 'timepicker', $this->settings['dir'] . 'js/timepicker.js', array(
 				'jquery-ui-timepicker'
 			), $this->settings['version'], true );
-		} 
+		}
 
 		if ( ! $has_locale && $js_locale != 'en' ) {
 			$timepicker_locale = array(

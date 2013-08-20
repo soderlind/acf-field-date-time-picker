@@ -32,6 +32,7 @@ class acf_field_date_time_picker extends acf_field
 			, 'show_week_number'  => 'false'
 			, 'picker'            => 'slider'
 			, 'save_as_timestamp' => 'true'
+			, 'get_as_timestamp'  => 'false'
 		);
 
 
@@ -204,6 +205,26 @@ class acf_field_date_time_picker extends acf_field
 				?>
 			</td>
 		</tr>
+		<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_week_number">
+			<td class="label">
+				<label for=""><?php _e( "Get field as timestamp?", $this->domain ); ?></label>
+				<p class="description"><?php printf( __( "Most users should leave this untouched, only set it to \"Yes\" if you need get the  date and time field as a timestamp using  <a href=\"%s\" target=\"_blank\">the_field()</a> or <a href=\"%s\" target=\"_blank\">get_field()</a> ", $this->domain ), "http://www.advancedcustomfields.com/resources/functions/the_field/", "http://www.advancedcustomfields.com/resources/functions/get_field/" );?></p>
+			</td>
+			<td>
+				<?php
+				do_action('acf/create_field', array(
+						'type'      => 'radio'
+						, 'name'    => 'fields['.$key.'][get_as_timestamp]'
+						, 'value'   => $field['get_as_timestamp']
+						, 'layout'  => 'horizontal'
+						, 'choices' => array(
+								'true'    => __( 'Yes', $this->domain )
+								, 'false' => __( 'No', $this->domain )
+						)
+					) );
+				?>
+			</td>
+		</tr>
 		<?php
 	}
 
@@ -232,25 +253,23 @@ class acf_field_date_time_picker extends acf_field
 
 	//function load_field_defaults( $field ) { return $field; }
 
-/*
-	*  load_value()
-	*
-	*  This filter is appied to the $value after it is loaded from the db
-	*
-	*  @type	filter
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	$value - the value found in the database
-	*  @param	$post_id - the $post_id from which the value was loaded from
-	*  @param	$field - the field array holding all the field options
-	*
-	*  @return	$value - the value to be saved in te database
-	*/
-
-	function load_value( $value, $post_id, $field ) {
+	function format_value($value, $post_id, $field)
+	{
 		$field = array_merge($this->defaults, $field);
 		if ($value != '' && $field['save_as_timestamp'] == 'true' && $this->isValidTimeStamp($value)) {
+			if ( $field['show_date'] == 'true') {
+				 $value = date_i18n(sprintf("%s %s",$this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $value);
+			} else {
+				 $value = date_i18n(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $value);
+			}
+		}
+		return $value;
+	}
+
+	function format_value_for_api($value, $post_id, $field)
+	{
+		$field = array_merge($this->defaults, $field);
+		if ($value != '' && $field['save_as_timestamp'] == 'true' && $field['get_as_timestamp'] != 'true' && $this->isValidTimeStamp($value)) {
 			if ( $field['show_date'] == 'true') {
 				 $value = date_i18n(sprintf("%s %s",$this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $value);
 			} else {

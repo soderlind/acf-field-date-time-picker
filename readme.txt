@@ -4,7 +4,7 @@ Donate link: http://soderlind.no/donate/
 Tags: acf, custom field,datepicker,timepicker
 Requires at least: 3.4
 Tested up to: 3.6
-Stable tag: 2.0.10
+Stable tag: 2.0.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,7 +63,7 @@ function my_register_fields()
 
 To set  the date and time format when you create the field, you have to create a string using the letters below.
 
-= Date format = 
+= Date format =
 
 `
 d    day of month (no leading zero)
@@ -80,7 +80,7 @@ y    year (two digit)
 yy   year (four digit)
 `
 
-= Time format = 
+= Time format =
 
 `
 H    Hour with no leading 0 (24 hour)
@@ -103,40 +103,42 @@ TT   AM or PM for AM/PM
 
 * `yy-mm-dd`: 2013-04-12
 * `HH:mm`: 24 hour clock, with a leading 0 for hour and minute
-* `h:m tt`: 12 hour clock with am/pm, no leading 0 
+* `h:m tt`: 12 hour clock with am/pm, no leading 0
 
 **How do I format the date and time when I want to use it in my theme?**
 
 The Date and Time Picker field is saved as an UNIX timestamp. Use the PHP [date](http://php.net/manual/en/function.date.php) function when you use it in your theme.
 
 == Changelog ==
+= 2.0.11 =
+* Added option to retrive field values, using the_field() and get_field(), as a timestamp
 = 2.0.10 =
 * Removed "value" from defaults
 = 2.0.9 =
 * Thanks to [flahertydaf](http://support.advancedcustomfields.com/forums/topic/custom-fields-get-emptied-when-publishing/page/2/#post-2325), the plugin in now working with the latest ACF version
 * Replaced DateTime::createFromFormat (PHP 5 >= 5.3.0), with strtotime
 * minor bugfixes
-= 2.0.8 = 
-* Adds option to store the date and time field as a UNIX timestamp or not. 
+= 2.0.8 =
+* Adds option to store the date and time field as a UNIX timestamp or not.
 = 2.0.7 =
 * Bug fix. 2.0.6 assumed that the stored date and time was in UNIX timestamp format. 2.0.7 will check and only convert if the date and time is.
-= 2.0.6 = 
+= 2.0.6 =
 * Changed how the Date and Time Picker field is triggered when ACF adds a new Date and Time Picker field to the DOM
 * Saves the Date and Time Picker field as an UNIX timestamp to MySQL. Use the PHP [date](http://php.net/manual/en/function.date.php) function  when you use it in your theme.
 = 2.0.5 =
 * When enqueuing JavaScripts, replaced dependecy of jquery-ui-datepicker with acf-datepicker
 = 2.0.4 =
-* Updated JavaScript [language detection and loading](http://soderlind.no/time-picker-field-for-advanced-custom-fields/#localization) 
+* Updated JavaScript [language detection and loading](http://soderlind.no/time-picker-field-for-advanced-custom-fields/#localization)
 = 2.0.3 =
 * Fixed Repeater field bug
 * Added support for including the field in a theme
 = 2.0.2 =
 * Updated readme.txt
 = 2.0.1 =
-* Minor fix 
+* Minor fix
 = 2.0.0.beta =
 * Total rewrite, based on the [acf-field-type-template](https://github.com/elliotcondon/acf-field-type-template). Works with ACF v3 and ACF v4. In this beta you can only add the Date Time Picker field as a plugin (i.e. not as a template field).
-= 1.2.0 = 
+= 1.2.0 =
 * Updated jquery-ui-timepicker-addon.js to the latest version (1.0.0) and added localization support.
 = 1.1.1 =
 * Fixed a small bug
