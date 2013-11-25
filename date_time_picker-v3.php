@@ -383,10 +383,8 @@ class acf_field_date_time_picker extends acf_Field {
 	    return strtr((string)$time_format, $chars);
 	}
 
-	function isValidTimeStamp($timestamp) { //from http://stackoverflow.com/a/2524761/1434155
-	    return ((string) (int) $timestamp === $timestamp)
-	        && ($timestamp <= PHP_INT_MAX)
-	        && ($timestamp >= ~PHP_INT_MAX);
+	function isValidTimeStamp($timestamp) {
+	    return ((string)(int)$timestamp === (string)$timestamp);
 	}
 
 	/*--------------------------------------------------------------------------------------
