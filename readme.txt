@@ -2,9 +2,9 @@
 Contributors: PerS
 Donate link: http://soderlind.no/donate/
 Tags: acf, custom field,datepicker,timepicker
-Requires at least: 3.4
-Tested up to: 3.6
-Stable tag: 2.0.11
+Requires at least: 3.6
+Tested up to: 3.7.1
+Stable tag: 2.0.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,6 +110,9 @@ TT   AM or PM for AM/PM
 The Date and Time Picker field is saved as an UNIX timestamp. Use the PHP [date](http://php.net/manual/en/function.date.php) function when you use it in your theme.
 
 == Changelog ==
+= 2.0.12 =
+* Added support for date format dd/mm/yy
+* Bugfix
 = 2.0.11 =
 * Added option to retrive field values, using the_field() and get_field(), as a timestamp
 = 2.0.10 =
