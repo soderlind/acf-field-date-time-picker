@@ -4,7 +4,7 @@ Adds a 'Date and Time Picker' field type for the [Advanced Custom Fields](http:/
 
 -----------------------
 
-### Works with ACF 4.2.0
+### Requires with ACF 4.3.5
 
 ### Overview
 
@@ -14,7 +14,7 @@ This is an add-on for the Advanced Custom Fields WordPress plugin, that allows y
 
 This add-on will work with:
 
-* Advanced Custom Fields version 4 and up
+* Advanced Custom Fields version 4.3.5 and up
 * Advanced Custom Fields version 3 and bellow
 
 
