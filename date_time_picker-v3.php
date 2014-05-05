@@ -26,7 +26,7 @@ class acf_field_date_time_picker extends acf_Field {
 		// set name / title
 		$this->name = 'date_time_picker';
 		$this->title = __( 'Date and Time Picker' );
-		$this->domain = 'acf-date_time_picker';
+		$this->domain = 'acf-field-date-time-picker';
 		$this->defaults = array(
 			  'label'              => __( 'Choose Time', $this->domain )
 			, 'time_format'        => 'hh:mm'
