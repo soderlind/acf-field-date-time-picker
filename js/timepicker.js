@@ -2,7 +2,7 @@
  *  Date and Time Picker
  */
 (function($){
-	$(document).live('acf/setup_fields', function(e, postbox){
+	$(document).on('acf/setup_fields', function(e, postbox){
 		$(postbox).find('input.ps_timepicker').each(function(){
 			var input = $(this)
 				, is_timeonly = (input.attr('data-date_format') == undefined)
