@@ -17,6 +17,8 @@
 	*/
 	
 	$(document).live('acf/setup_fields', function(e, postbox){
+
+		alert('test');
 		
 		$(postbox).find('.my-field-class').each(function(){
 			
