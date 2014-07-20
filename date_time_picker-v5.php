@@ -60,7 +60,7 @@ class acf_field_date_time_picker extends acf_field
 		acf_render_field_setting( $field, array(
 			'type'      => 'radio'
 			, 'label'	=> __( "Date and Time Picker?", $this->domain)
-			, 'name'    => 'fields['.$key.'][show_date]'
+			, 'name'    => 'show_date'
 			, 'value'   => $field['show_date']
 			, 'layout'  => 'horizontal'
 			, 'choices' => array(
@@ -73,7 +73,7 @@ class acf_field_date_time_picker extends acf_field
 			'type'    => 'text'
 			, 'label' => __( "Date Format", $this->domain )
 			, 'instructions'	=> sprintf(__("eg. mm/dd/yy. read more about <a href=\"%s\" target=\"_blank\">formatting  date</a>", $this->domain ),"http://docs.jquery.com/UI/Datepicker/formatDate")
-			, 'name'  => 'fields[' . $key . '][date_format]'
+			, 'name'  => 'date_format'
 			, 'value' => $field['date_format']
 		) );
 
@@ -81,14 +81,14 @@ class acf_field_date_time_picker extends acf_field
 			'type'    => 'text'
 			, 'label' => __( "Time Format", $this->domain )
 			, 'instructions' => sprintf(__("eg. hh:mm. read more about <a href=\"%s\" target=\"_blank\">formatting  time</a>", $this->domain ),"http://trentrichardson.com/examples/timepicker/#tp-formatting")
-			, 'name'  => 'fields[' . $key . '][time_format]'
+			, 'name'  => 'time_format'
 			, 'value' => $field['time_format']
 		) );
 
 		acf_render_field_setting( $field, array(
 			'type'      => 'radio'
 			, 'label' 	=> __( "Display Week Number?", $this->domain )
-			, 'name'    => 'fields['.$key.'][show_week_number]'
+			, 'name'    => 'show_week_number'
 			, 'value'   => $field['show_week_number']
 			, 'layout'  => 'horizontal'
 			, 'choices' => array(
@@ -100,7 +100,7 @@ class acf_field_date_time_picker extends acf_field
 		acf_render_field_setting( $field, array(
 			'type'      => 'radio'
 			, 'label'	=> __( "Time Picker style?", $this->domain )
-			, 'name'    => 'fields['.$key.'][picker]'
+			, 'name'    => 'picker'
 			, 'value'   => $field['picker']
 			, 'layout'  => 'horizontal'
 			, 'choices' => array(
@@ -113,7 +113,7 @@ class acf_field_date_time_picker extends acf_field
 			'type'      => 'radio'
 			, 'label'	=> __( "Save as timestamp?", $this->domain )
 			, 'instructions' => sprintf( __( "Most users should leave this untouched, only set it to \"No\" if you need a date and time format not supported by <a href=\"%s\" target=\"_blank\">strtotime</a>", $this->domain ), "http://php.net/manual/en/function.strtotime.php" )
-			, 'name'    => 'fields['.$key.'][save_as_timestamp]'
+			, 'name'    => 'save_as_timestamp'
 			, 'value'   => $field['save_as_timestamp']
 			, 'layout'  => 'horizontal'
 			, 'choices' => array(
@@ -126,7 +126,7 @@ class acf_field_date_time_picker extends acf_field
 			'type'      => 'radio'
 			, 'label'	=> __( "Get field as timestamp?", $this->domain )
 			, 'instructions' => sprintf( __( "Most users should leave this untouched, only set it to \"Yes\" if you need get the  date and time field as a timestamp using  <a href=\"%s\" target=\"_blank\">the_field()</a> or <a href=\"%s\" target=\"_blank\">get_field()</a> ", $this->domain ), "http://www.advancedcustomfields.com/resources/functions/the_field/", "http://www.advancedcustomfields.com/resources/functions/get_field/" )
-			, 'name'    => 'fields['.$key.'][get_as_timestamp]'
+			, 'name'    => 'get_as_timestamp'
 			, 'value'   => $field['get_as_timestamp']
 			, 'layout'  => 'horizontal'
 			, 'choices' => array(
