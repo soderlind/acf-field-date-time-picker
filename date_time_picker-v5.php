@@ -216,6 +216,35 @@ class acf_field_date_time_picker extends acf_field
 	function isValidTimeStamp($timestamp) {
 	    return ((string)(int)$timestamp === (string)$timestamp);
 	}
+
+	/*
+	*  load_value()
+	*
+	*  This filter is applied to the $value after it is loaded from the db
+	*
+	*  @type	filter
+	*  @since	3.6
+	*  @date	23/01/13
+	*
+	*  @param	$value (mixed) the value found in the database
+	*  @param	$post_id (mixed) the $post_id from which the value was loaded
+	*  @param	$field (array) the field array holding all the field options
+	*  @return	$value
+	*/
+	function load_value( $value, $post_id, $field ) {
+		
+		$field = array_merge($this->defaults, $field);
+
+		if ($value != '' && $field['save_as_timestamp'] == 'true' && $field['get_as_timestamp'] != 'true' && $this->isValidTimeStamp($value)) {
+			if ( $field['show_date'] == 'true') {
+				 $value = date_i18n(sprintf("%s %s",$this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $value);
+			} else {
+				 $value = date_i18n(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $value);
+			}
+		}
+		return $value;
+		
+	}
 	
 	/*
 	*  update_value()
