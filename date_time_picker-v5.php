@@ -374,7 +374,7 @@ class acf_field_date_time_picker extends acf_field
 	}
 
 	function get_js_locale($locale) {
-		$dir_path = $this->path . 'js/localization/';
+		$dir_path = $this->path . '/js/localization/';
 		$exclude_list = array(".", "..");
 		$languages = $this->ps_preg_filter("/jquery-ui-timepicker-(.*?)\.js/","$1",array_diff(scandir($dir_path), $exclude_list));
 
