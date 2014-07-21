@@ -32,7 +32,7 @@ class acf_field_date_time_picker extends acf_field
 
 		$this->version = '2.0.15';
 		$this->dir = plugin_dir_url( __FILE__ );
-		$this->path = plugin_basename(__FILE__);
+		$this->path = plugin_dir_path(__FILE__);
 
 		// do not delete!
     	parent::__construct();
@@ -307,7 +307,7 @@ class acf_field_date_time_picker extends acf_field
 				'jquery-ui-slider'
 		), $this->version, true );
 
-		if ( file_exists(  $this->path . '/js/localization/jquery-ui-timepicker-' . $js_locale . '.js' ) ) {
+		if ( file_exists(  $this->path . 'js/localization/jquery-ui-timepicker-' . $js_locale . '.js' ) ) {
 			wp_enqueue_script( 'timepicker-localization', $this->dir . 'js/localization/jquery-ui-timepicker-' . $js_locale . '.js', array(
 				'jquery-ui-timepicker'
 			), $this->version, true );
@@ -374,7 +374,7 @@ class acf_field_date_time_picker extends acf_field
 	}
 
 	function get_js_locale($locale) {
-		$dir_path = $this->path . '/js/localization/';
+		$dir_path = $this->path . 'js/localization/';
 		$exclude_list = array(".", "..");
 		$languages = $this->ps_preg_filter("/jquery-ui-timepicker-(.*?)\.js/","$1",array_diff(scandir($dir_path), $exclude_list));
 
