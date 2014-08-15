@@ -93,3 +93,7 @@ To set  the date and time format when you create the field, you have to create a
 ### More Information
 
 http://soderlind.no/time-picker-field-for-advanced-custom-fields/
+
+### Changelog
+
+Please see [Changelog.md](Changelog.md)
