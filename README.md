@@ -96,4 +96,4 @@ http://soderlind.no/time-picker-field-for-advanced-custom-fields/
 
 ### Changelog
 
-![Changelog.md](Changelog.md)
+Please see [Changelog.md](Changelog.md)
