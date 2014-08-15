@@ -4,7 +4,7 @@ Adds a 'Date and Time Picker' field type for the [Advanced Custom Fields](http:/
 
 -----------------------
 
-### Thanks to [yanknudtskov](https://github.com/yanknudtskov), the plugin now works with ACF 5.0 
+### Thanks to [yanknudtskov](https://github.com/yanknudtskov), the plugin now works with ACF 5.0
 
 ### Overview
 
@@ -21,7 +21,7 @@ This add-on will work with:
 ### Installation
 
 
-This add-on can be treated as both a WP plugin and a theme include.
+This add-on can be treated as both a WP plugin and a theme include. The plugin is also available from the [WordPress plugin directory](http://wordpress.org/plugins/acf-field-date-time-picker/)
 
 **Install as Plugin**
 
@@ -42,14 +42,14 @@ function my_register_fields()
 }
 ```
 
-### Frequently Asked Questions 
+### Frequently Asked Questions
 
 
 **How do I set the date and time format?**
 
 To set  the date and time format when you create the field, you have to create a string using the letters below.
 
-#### Date format 
+#### Date format
 
 
 		d    day of month (no leading zero)
@@ -66,7 +66,7 @@ To set  the date and time format when you create the field, you have to create a
 		yy   year (four digit)
 
 
-#### Time format 
+#### Time format
 
 
 		H    Hour with no leading 0 (24 hour)
@@ -88,7 +88,7 @@ To set  the date and time format when you create the field, you have to create a
 
 * `yy-mm-dd`: 2013-04-12
 * `HH:mm`: 24 hour clock, with a leading 0 for hour and minute
-* `h:m tt`: 12 hour clock with am/pm, no leading 0 
+* `h:m tt`: 12 hour clock with am/pm, no leading 0
 
 ### More Information
 
