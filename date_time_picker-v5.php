@@ -151,11 +151,17 @@ class acf_field_date_time_picker extends acf_field
 	*/
 
 	function render_field( $field ) {
+		$value = $field['value'];
+
+		// in the backend, we always want to format the timestamp (should we indeed have one)
+		if ($this->are_we_dealing_with_a_timestamp($value, $field)) {
+			$value = $this->format_timestamp($value, $field);
+		}
 
 		if ( $field['show_date'] !== 'true' ) {
-			echo '<input type="text" value="' . $field['value'] . '" name="' . $field['name'] . '" class="ps_timepicker" value="" data-picker="' . $field['picker'] . '" data-time_format="' . $field['time_format'] . '"  title="' . $field['label'] . '" />';
+			echo '<input type="text" value="' . $value . '" name="' . $field['name'] . '" class="ps_timepicker" value="" data-picker="' . $field['picker'] . '" data-time_format="' . $field['time_format'] . '"  title="' . $field['label'] . '" />';
 		} else {
-			echo '<input type="text" value="' . $field['value'] . '" name="' . $field['name'] . '" class="ps_timepicker" value="" data-picker="' . $field['picker'] . '" data-date_format="' . $field['date_format'] . '" data-time_format="' . $field['time_format'] . '" data-show_week_number="' . $field['show_week_number'] . '"  title="' . $field['label'] . '" />';
+			echo '<input type="text" value="' . $value . '" name="' . $field['name'] . '" class="ps_timepicker" value="" data-picker="' . $field['picker'] . '" data-date_format="' . $field['date_format'] . '" data-time_format="' . $field['time_format'] . '" data-show_week_number="' . $field['show_week_number'] . '"  title="' . $field['label'] . '" />';
 		}
 	}
 
@@ -163,24 +169,28 @@ class acf_field_date_time_picker extends acf_field
 	{
 		$field = array_merge($this->defaults, $field);
 
-		/*if ($value != '' && $field['save_as_timestamp'] == 'true' && $this->isValidTimeStamp($value)) {
-			if ( $field['show_date'] == 'true') {
-				 $value = date_i18n(sprintf("%s %s",$this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $value);
-			} else {
-				 $value = date_i18n(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $value);
-			}
-		}*/
+		if ($this->are_we_dealing_with_a_timestamp($value, $field) && $field['get_as_timestamp'] != 'true') {
+			// we have a timestamp but don't want to return one, so, format it
 
-		if ($value != '' && $field['save_as_timestamp'] == 'true' && $field['get_as_timestamp'] != 'true' && $this->isValidTimeStamp($value)) {
-			if ( $field['show_date'] == 'true') {
-				 $value = date_i18n(sprintf("%s %s",$this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $value);
-			} else {
-				 $value = date_i18n(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $value);
-			}
+			$value = $this->format_timestamp($value, $field);
 		}
+
 		return $value;
 	}
 
+	private function are_we_dealing_with_a_timestamp($value, $field) {
+		return $value != '' && $field['save_as_timestamp'] == 'true' && $this->isValidTimeStamp($value);
+	}
+
+	private function format_timestamp($timestamp, $field) {
+		if ($field['show_date'] == 'true') {
+			$formatString = sprintf("%s %s",$this->js_to_php_dateformat($field['date_format']), $this->js_to_php_timeformat($field['time_format']));
+		} else {
+			$formatString = sprintf("%s",$this->js_to_php_timeformat($field['time_format']));
+		}
+
+		return date_i18n($formatString, $timestamp);
+	}
 
 	function js_to_php_dateformat($date_format) {
 	    $chars = array(
@@ -217,35 +227,6 @@ class acf_field_date_time_picker extends acf_field
 	    return ((string)(int)$timestamp === (string)$timestamp);
 	}
 
-	/*
-	*  load_value()
-	*
-	*  This filter is applied to the $value after it is loaded from the db
-	*
-	*  @type	filter
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	$value (mixed) the value found in the database
-	*  @param	$post_id (mixed) the $post_id from which the value was loaded
-	*  @param	$field (array) the field array holding all the field options
-	*  @return	$value
-	*/
-	function load_value( $value, $post_id, $field ) {
-		
-		$field = array_merge($this->defaults, $field);
-
-		if ($value != '' && $field['save_as_timestamp'] == 'true' && $field['get_as_timestamp'] != 'true' && $this->isValidTimeStamp($value)) {
-			if ( $field['show_date'] == 'true') {
-				 $value = date_i18n(sprintf("%s %s",$this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $value);
-			} else {
-				 $value = date_i18n(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $value);
-			}
-		}
-		return $value;
-		
-	}
-	
 	/*
 	*  update_value()
 	*
