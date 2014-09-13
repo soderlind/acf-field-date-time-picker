@@ -1,5 +1,8 @@
 # Changelog
 
+### 2.0.17
+* Fix Backend Timestamp handling: `render_field` and Tested Up WordPress 4.0
+
 ### 2.0.16
 * Fix Undefined property: `acf_field_date_time_picker::$domain`
 
