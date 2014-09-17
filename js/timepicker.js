@@ -35,10 +35,10 @@
 					, time_format = input.attr('data-time_format')
 					, has_ampm = (input.attr('data-time_format').search(/t/i) != -1);
 
-				/*if( acf.helpers.is_clone_field(input) )
-				{
+				//don't apply datepicker to clone field
+				if (input.parents('.acf-row.clone').length) {
 					return;
-				}*/
+				}
 
 
 				input.addClass('active').attr("placeholder", (is_timeonly) ? time_format : date_format + ' ' + time_format).datetimepicker({
