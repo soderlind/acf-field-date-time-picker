@@ -1,7 +1,10 @@
 # Changelog
 
+### 2.0.18
+* Thanks to [kamilgrzegorczyk](https://github.com/kamilgrzegorczyk), Fixing clone field issue in repeater
+
 ### 2.0.17
-* Fix Backend Timestamp handling: `render_field` and Tested Up WordPress 4.0
+* Thanks to [leocaseiro](https://github.com/leocaseiro), Fix Backend Timestamp handling: `render_field` and Tested Up WordPress 4.0
 
 ### 2.0.16
 * Fix Undefined property: `acf_field_date_time_picker::$domain`
