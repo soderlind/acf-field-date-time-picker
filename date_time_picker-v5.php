@@ -56,7 +56,7 @@ class acf_field_date_time_picker extends acf_field
 	{
 		$field = array_merge($this->defaults, $field);
 		$key = $field['name'];
-		
+
 		acf_render_field_setting( $field, array(
 			'type'      => 'radio'
 			, 'label'	=> __( "Date and Time Picker?", $this->domain)
@@ -234,7 +234,7 @@ class acf_field_date_time_picker extends acf_field
 	*  @return	$value
 	*/
 	function load_value( $value, $post_id, $field ) {
-		
+
 		$field = array_merge($this->defaults, $field);
 
 		if ($value != '' && $field['save_as_timestamp'] == 'true' && $field['get_as_timestamp'] != 'true' && $this->isValidTimeStamp($value)) {
@@ -245,9 +245,9 @@ class acf_field_date_time_picker extends acf_field
 			}
 		}
 		return $value;
-		
+
 	}
-	
+
 	/*
 	*  update_value()
 	*
@@ -272,17 +272,19 @@ class acf_field_date_time_picker extends acf_field
 	// 	return $value;
 	// }
 
-    function update_value( $value, $post_id, $field ) {
-        $field = array_merge($this->defaults, $field);
-        if ($value != '' && $field['save_as_timestamp'] == 'true') {
-            if (preg_match('/^dd?\//',$field['date_format'] )) { //if start with dd/ or d/ (not supported by strtotime())
-                $value = str_replace('/', '-', $value);
-            }
-            $value = strtotime( $value );
+	function update_value( $value, $post_id, $field ) {
+		$field = array_merge($this->defaults, $field);
+		if ($value != '' && $field['save_as_timestamp'] == 'true') {
+			if ( $field['show_date'] == 'true') {
+				$format = $this->js_to_php_dateformat($field['date_format']) . ' ' . $this->js_to_php_timeformat($field['time_format']);
+			} else {
+				$format = $this->js_to_php_timeformat($field['time_format']);
+			}
+			$date = DateTime::createFromFormat($format, $value);
+			$value = $date->getTimestamp();
         }
-
-        return $value;
-    }
+		return $value;
+	}
 
 	/*
 	*  input_admin_enqueue_scripts()
@@ -299,7 +301,7 @@ class acf_field_date_time_picker extends acf_field
 	function input_admin_enqueue_scripts() {
 
 		global $wp_locale;
-		
+
 
 		$has_locale = false;
 		$js_locale = $this->get_js_locale(get_locale());
