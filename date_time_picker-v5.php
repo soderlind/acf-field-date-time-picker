@@ -151,12 +151,28 @@ class acf_field_date_time_picker extends acf_field
 	*/
 
 	function render_field( $field ) {
-
+		$tz = new DateTimeZone('Europe/Ljubljana');
 		if ( $field['show_date'] !== 'true' ) {
-            $value = $field['save_as_timestamp'] && $this->isValidTimeStamp($field['value']) ? date_i18n(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $field['value'])  : $field['value'];
+            // $value = $field['save_as_timestamp'] && $this->isValidTimeStamp($field['value']) ? date_i18n(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $field['value'])  : $field['value'];
+            if ( $field['save_as_timestamp'] && $this->isValidTimeStamp($field['value']) ) {
+				$d = new DateTime();
+				$d->setTimestamp($field['value']);
+				$d->setTimezone($tz);
+				$value = $d->format('d. m. Y H:i');
+            } else {
+				$value = $field['value'];
+            }
             echo '<input type="text" value="' . $value . '" name="' . $field['name'] . '" class="ps_timepicker" value="" data-picker="' . $field['picker'] . '" data-time_format="' . $field['time_format'] . '"  title="' . $field['label'] . '" />';
         } else {
-            $value = $field['save_as_timestamp'] && $this->isValidTimeStamp($field['value']) ? date_i18n(sprintf("%s %s", $this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $field['value'])  : $field['value'];
+			$value = $field['save_as_timestamp'] && $this->isValidTimeStamp($field['value']) ? date_i18n(sprintf("%s %s", $this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $field['value'])  : $field['value'];
+			if ( $field['save_as_timestamp'] && $this->isValidTimeStamp($field['value']) ) {
+				$d = new DateTime();
+				$d->setTimestamp($field['value']);
+				$d->setTimezone($tz);
+				$value = $d->format('d. m. Y H.i');
+            } else {
+				$value = $field['value'];
+            }
             echo '<input type="text" value="' . $value . '" name="' . $field['name'] . '" class="ps_timepicker" value="" data-picker="' . $field['picker'] . '" data-date_format="' . $field['date_format'] . '" data-time_format="' . $field['time_format'] . '" data-show_week_number="' . $field['show_week_number'] . '"  title="' . $field['label'] . '" />';
         }
     }
@@ -280,7 +296,8 @@ class acf_field_date_time_picker extends acf_field
 			} else {
 				$format = $this->js_to_php_timeformat($field['time_format']);
 			}
-			$date = DateTime::createFromFormat($format, $value);
+			$tz = new DateTimeZone('Europe/Ljubljana');
+			$date = DateTime::createFromFormat($format, $value, $tz);
 			$value = $date->getTimestamp();
         }
 		return $value;
