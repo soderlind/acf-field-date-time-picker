@@ -58,8 +58,8 @@
 					, dayNamesShort: timepicker_objectL10n.dayNamesShort
 					, dayNamesMin: timepicker_objectL10n.dayNamesMin
 					, firstDay: timepicker_objectL10n.firstDay
+					, stepMinute: parseInt(input.attr('data-minute_step'))
 				});
-
 				
 				if($('body > #ui-datepicker-div').length > 0)
 				{
@@ -131,9 +131,9 @@
 					, dayNamesShort: timepicker_objectL10n.dayNamesShort
 					, dayNamesMin: timepicker_objectL10n.dayNamesMin
 					, firstDay: timepicker_objectL10n.firstDay
+					, stepMinute: parseInt(input.attr('data-minute_step'))
 				});
 
-				
 				if($('body > #ui-datepicker-div').length > 0)
 				{
 					$('#ui-datepicker-div').wrap('<div class="ui-acf" />');
