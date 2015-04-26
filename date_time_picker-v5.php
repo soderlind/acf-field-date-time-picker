@@ -28,6 +28,7 @@ class acf_field_date_time_picker extends acf_field
 			, 'picker'            => 'slider'
 			, 'save_as_timestamp' => 'true'
 			, 'get_as_timestamp'  => 'false'
+			, 'minute_step'       => 1
 		);
 
 		$this->version = '2.0.15';
@@ -83,6 +84,21 @@ class acf_field_date_time_picker extends acf_field
 			, 'instructions' => sprintf(__("eg. hh:mm. read more about <a href=\"%s\" target=\"_blank\">formatting  time</a>", $this->domain ),"http://trentrichardson.com/examples/timepicker/#tp-formatting")
 			, 'name'  => 'time_format'
 			, 'value' => $field['time_format']
+		) );
+
+		acf_render_field_setting( $field, array(
+			'type'       => 'select'
+			, 'label'    => __( "Minute Step", $this->domain )
+			, 'name'     => 'minute_step'
+			, 'value'    => $field['minute_step']
+			, 'choices' => array(
+					1          => __('1', $this->domain)
+				, 5          => __('5', $this->domain)
+				, 10         => __('10', $this->domain)
+				, 15         => __('15', $this->domain)
+				, 20         => __('20', $this->domain)
+				, 30         => __('30', $this->domain)
+			)
 		) );
 
 		acf_render_field_setting( $field, array(
