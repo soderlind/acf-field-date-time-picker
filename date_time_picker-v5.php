@@ -170,10 +170,10 @@ class acf_field_date_time_picker extends acf_field
 
 		if ( $field['show_date'] !== 'true' ) {
             $value = $field['save_as_timestamp'] && $this->isValidTimeStamp($field['value']) ? date_i18n(sprintf("%s",$this->js_to_php_timeformat($field['time_format'])), $field['value'])  : $field['value'];
-            echo '<input type="text" value="' . $value . '" name="' . $field['name'] . '" class="ps_timepicker" value="" data-picker="' . $field['picker'] . '" data-time_format="' . $field['time_format'] . '"  title="' . $field['label'] . '" />';
+            echo '<input type="text" value="' . $value . '" name="' . $field['name'] . '" class="ps_timepicker" value="" data-picker="' . $field['picker'] . '" data-time_format="' . $field['time_format'] . '" data-minute_step="' . $field['minute_step'] . '" title="' . $field['label'] . '" />';
         } else {
             $value = $field['save_as_timestamp'] && $this->isValidTimeStamp($field['value']) ? date_i18n(sprintf("%s %s", $this->js_to_php_dateformat($field['date_format']),$this->js_to_php_timeformat($field['time_format'])), $field['value'])  : $field['value'];
-            echo '<input type="text" value="' . $value . '" name="' . $field['name'] . '" class="ps_timepicker" value="" data-picker="' . $field['picker'] . '" data-date_format="' . $field['date_format'] . '" data-time_format="' . $field['time_format'] . '" data-show_week_number="' . $field['show_week_number'] . '"  title="' . $field['label'] . '" />';
+            echo '<input type="text" value="' . $value . '" name="' . $field['name'] . '" class="ps_timepicker" value="" data-picker="' . $field['picker'] . '" data-date_format="' . $field['date_format'] . '" data-time_format="' . $field['time_format'] . '" data-show_week_number="' . $field['show_week_number'] . '" data-minute_step="' . $field['minute_step'] . '" title="' . $field['label'] . '" />';
         }
     }
 
