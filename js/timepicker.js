@@ -36,7 +36,7 @@
 					, has_ampm = (input.attr('data-time_format').search(/t/i) != -1);
 
 				//don't apply datepicker to clone field
-				if (input.parents('.acf-row.clone').length) {
+				if (input.parents('.acf-row.clone, .acf-row.acf-clone').length) {
 					return;
 				}
 
