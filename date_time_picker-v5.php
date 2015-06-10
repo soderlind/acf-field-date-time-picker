@@ -12,7 +12,7 @@ class acf_field_date_time_picker extends acf_field
 	*  @date	23/01/13
 	*/
 
-	function __construct()
+	function __construct($opts = array())
 	{
 		// vars
 		$this->name = 'date_time_picker';
@@ -31,8 +31,8 @@ class acf_field_date_time_picker extends acf_field
 		);
 
 		$this->version = '2.0.15';
-		$this->dir = plugin_dir_url( __FILE__ );
-		$this->path = plugin_dir_path(__FILE__);
+		$this->dir = isset($opts['url'])?$opts['url']:plugin_dir_url( __FILE__ );
+		$this->path = isset($opts['path'])?$opts['path']:plugin_dir_path(__FILE__);
 
 		// do not delete!
     	parent::__construct();
@@ -384,7 +384,7 @@ class acf_field_date_time_picker extends acf_field
 
 		if (false !== strpos($locale,'-')) {
 			$l = explode("-",$locale);
-			$pattern = array('/' .  $locale . '/','/' . $l[0] . '/', '/' . $l[1]  . '/');
+			$pattern = array('/' .  $locale . '/','/' . $l[0] . '/' );
 		} else {
 			$pattern = array('/' . $locale . '/');
 		}
@@ -406,6 +406,5 @@ class acf_field_date_time_picker extends acf_field
 
 
 // create field
-new acf_field_date_time_picker();
+//new acf_field_date_time_picker();
 
-?>
