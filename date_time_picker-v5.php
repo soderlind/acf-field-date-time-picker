@@ -154,12 +154,12 @@ class acf_field_date_time_picker extends acf_field {
         if ($field['show_date'] !== 'true') {
             $format = sprintf("%s", $this->js_to_php_timeformat($field['time_format']));
 
-            $value = $field['save_as_timestamp'] ? $time->format($format) : $field['value'];
+            $value = $field['save_as_timestamp'] && !empty($field['value']) ? $time->format($format) : '';
             echo '<input type="text" value="' . $value . '" name="' . $field['name'] . '" class="ps_timepicker" value="" data-picker="' . $field['picker'] . '" data-time_format="' . $field['time_format'] . '"  title="' . $field['label'] . '" />';
         } else {
             $format = sprintf("%s %s", $this->js_to_php_dateformat($field['date_format']), $this->js_to_php_timeformat($field['time_format']));
 
-            $value = $field['save_as_timestamp'] ? $time->format($format) : $field['value'];
+            $value = $field['save_as_timestamp'] && !empty($field['value']) ? $time->format($format) : '';
             echo '<input type="text" value="' . $value . '" name="' . $field['name'] . '" class="ps_timepicker" value="" data-picker="' . $field['picker'] . '" data-date_format="' . $field['date_format'] . '" data-time_format="' . $field['time_format'] . '" data-show_week_number="' . $field['show_week_number'] . '"  title="' . $field['label'] . '" />';
         }
     }
