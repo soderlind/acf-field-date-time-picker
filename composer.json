@@ -1,0 +1,18 @@
+{
+	"name": "soderlind/acf-field-date-time-picker",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0",
+	"description": "Adds a 'Date and Time Picker' field type for the Advanced Custom Fields WordPress plugin.",
+	"homepage": "https://soderlind.no/time-picker-field-for-advanced-custom-fields/",
+	"authors": [
+		{
+			"name": "Per Søderlind",
+			"homepage": "https://github.com/soderlind"
+		}
+	],
+	"keywords": ["wordpress"],
+	"require": {
+		"php": ">=5.4.0",
+		"composer/installers": "~1.0"
+	}
+}
