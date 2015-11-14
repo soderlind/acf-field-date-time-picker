@@ -63,7 +63,7 @@
 				
 				if($('body > #ui-datepicker-div').length > 0)
 				{
-					$('#ui-datepicker-div').wrap('<div class="ui-acf" />');
+					$('#ui-datepicker-div').hide().wrap('<div class="ui-acf" />');
 				}
 
 				// allow null
@@ -136,7 +136,7 @@
 				
 				if($('body > #ui-datepicker-div').length > 0)
 				{
-					$('#ui-datepicker-div').wrap('<div class="ui-acf" />');
+					$('#ui-datepicker-div').hide().wrap('<div class="ui-acf" />');
 				}
 
 				// allow null
