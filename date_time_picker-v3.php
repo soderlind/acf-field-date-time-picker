@@ -296,12 +296,14 @@ class acf_field_date_time_picker extends acf_Field {
 	function update_value($post_id, $field, $value) {
 		$field = array_merge($this->defaults, $field);
 		if ($value != '' && $field['save_as_timestamp'] == 'true') {
-            if (preg_match('/^dd?\//',$field['date_format'] )) { //if start with dd/ or d/ (not supported by strtotime())
-                $value = str_replace('/', '-', $value);
-            }
-            $value = strtotime( $value );
+			if ( $field['show_date'] == 'true') {
+				$format = $this->js_to_php_dateformat($field['date_format']) . ' ' . $this->js_to_php_timeformat($field['time_format']);
+			} else {
+				$format = $this->js_to_php_timeformat($field['time_format']);
+			}
+			$date = DateTime::createFromFormat($format, $value);
+			$value = $date->getTimestamp();
         }
-
 		parent::update_value($post_id, $field, $value);
 	}
 
