@@ -294,11 +294,33 @@ class acf_field_date_time_picker extends acf_Field {
 	*-------------------------------------------------------------------------------------*/
 
 	function update_value($post_id, $field, $value) {
+
+		global $wp_locale;
+
 		$field = array_merge($this->defaults, $field);
 		if ($value != '' && $field['save_as_timestamp'] == 'true') {
             if (preg_match('/^dd?\//',$field['date_format'] )) { //if start with dd/ or d/ (not supported by strtotime())
                 $value = str_replace('/', '-', $value);
             }
+
+			// convert localized month names into their respective english counterpart
+			$value = preg_replace(array_map(function ($month) {
+				return '/' . preg_quote($month) . '/';
+			}, $wp_locale->month), array(
+				'January',
+				'February',
+				'March',
+				'April',
+				'May',
+				'June',
+				'July',
+				'August',
+				'September',
+				'October',
+				'November',
+				'December'
+			), $value);
+
             $value = strtotime( $value );
         }
 
