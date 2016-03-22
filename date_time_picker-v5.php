@@ -53,7 +53,7 @@ class acf_field_date_time_picker extends acf_field
         $this->defaults['label'] = __('Choose Time', $this->domain);
 
         $this->path = plugin_dir_path(__FILE__);
-        $this->dir = plugins_url($this->domain) . '/';
+        $this->dir = plugins_url(basename(__DIR__)) . '/';
 
         // do not delete!
         parent::__construct();

@@ -1,6 +1,9 @@
 /**
  *  Date and Time Picker
  */
+
+acf = acf || {};
+
 (function ($) {
 
     function initialize_field($el) {
@@ -24,8 +27,8 @@
          */
         acf.add_action('ready append', function ($el) {
 
-            $el.find('input.ps_timepicker').each(function () {
-                var input = $(this),
+            acf.get_fields({ type : 'date_time_picker'}, $el).each(function () {
+                var input = $('input', $(this)),
                     is_timeonly = (input.attr('data-date_format') == undefined),
                     date_format = (input.attr('data-date_format') != undefined) ? input.attr('data-date_format') : 'mm/dd/yy',
                     time_format = input.attr('data-time_format'),
