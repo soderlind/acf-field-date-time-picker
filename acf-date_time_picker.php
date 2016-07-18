@@ -1,4 +1,5 @@
 <?php
+
 /*
 Plugin Name: Advanced Custom Fields: Date and Time Picker
 Plugin URI: https://github.com/soderlind/acf-field-date-time-picker
@@ -12,70 +13,63 @@ Text Domain: acf-field-date-time-picker
 Domain Path: /languages
 */
 
-
+/**
+ * Class acf_field_date_time_picker_plugin
+ */
 class acf_field_date_time_picker_plugin
 {
-	/*
-	*  Construct
-	*
-	*  @description:
-	*  @since: 3.6
-	*  @created: 1/04/13
-	*/
+    /**
+     * Construct
+     *
+     * @description:
+     * @since: 3.6
+     * @created: 1/04/13
+     */
+    function __construct()
+    {
+        load_plugin_textdomain('acf-field-date-time-picker', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 
-	function __construct()
-	{
-		load_plugin_textdomain( 'acf-field-date-time-picker', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+        // version 5+
+        add_action('acf/include_field_types', array($this, 'include_field_types'));
 
-		// version 5+
-		add_action('acf/include_field_types', array($this, 'include_field_types'));	
-
-		// version 4+
-		add_action('acf/register_fields', array($this, 'register_fields'));
-
-
-		// version 3-
-		add_action( 'init', array( $this, 'init' ));
-	}
+        // version 4+
+        add_action('acf/register_fields', array($this, 'register_fields'));
 
 
-	/*
-	*  Init
-	*
-	*  @description:
-	*  @since: 3.6
-	*  @created: 1/04/13
-	*/
+        // version 3-
+        add_action('init', array($this, 'init'));
+    }
 
-	function init()
-	{
-		if(function_exists('register_field'))
-		{
-			register_field('acf_field_date_time_picker', dirname(__File__) . '/date_time_picker-v3.php');
-		}
-	}
+    /**
+     * Init
+     *
+     * @description:
+     * @since: 3.6
+     * @created: 1/04/13
+     */
+    function init()
+    {
+        if (function_exists('register_field')) {
+            register_field('acf_field_date_time_picker', dirname(__File__) . '/date_time_picker-v3.php');
+        }
+    }
 
-	/*
-	*  register_fields
-	*
-	*  @description:
-	*  @since: 3.6
-	*  @created: 1/04/13
-	*/
+    /**
+     * register_fields
+     *
+     * @description:
+     * @since: 3.6
+     * @created: 1/04/13
+     */
+    function register_fields()
+    {
+        include_once('date_time_picker-v4.php');
+    }
 
-	function register_fields()
-	{
-		include_once('date_time_picker-v4.php');
-	}
-
-
-	function include_field_types()
-	{
-		include_once('date_time_picker-v5.php');
-	}
-
+    function include_field_types()
+    {
+        include_once('date_time_picker-v5.php');
+    }
 }
 
 new acf_field_date_time_picker_plugin();
-
-?>
