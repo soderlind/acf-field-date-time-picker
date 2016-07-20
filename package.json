@@ -1,0 +1,34 @@
+{
+  "name": "acf-field-date-time-picker",
+  "title": "Date and Time Picker Field",
+  "version": "2.1.0",
+  "git_tag": "2.1.0",
+  "description": "Date and Time Picker field for Advanced Custom Fields",
+  "main": "acf-date-time-picker.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/soderlind/acf-field-date-time-picker.git"
+  },
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/soderlind/acf-field-date-time-picker/issues/new"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-changelog": "^0.3.1",
+    "grunt-cli": "~0.1.13",
+    "grunt-composer": "^0.4.4",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-git": "^0.3.4",
+    "grunt-push-svn": "^0.2.1",
+    "grunt-remove": "^0.1.0",
+    "grunt-svn-export": "^0.1.7",
+    "grunt-text-replace": "^0.4.0",
+    "grunt-wp-i18n": "^0.5.2"
+  }
+}
