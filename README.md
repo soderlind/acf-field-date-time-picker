@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/soderlind/acf-debug-list-enqueued-scripts.svg?branch=master)](https://travis-ci.org/soderlind/acf-debug-list-enqueued-scripts)
 # ACF  Date and Time Picker Field
 
 Adds a 'Date and Time Picker' field type for the [Advanced Custom Fields](http://wordpress.org/extend/plugins/advanced-custom-fields/) WordPress plugin.
@@ -12,11 +13,7 @@ This is an add-on for the Advanced Custom Fields WordPress plugin, that allows y
 
 ### Compatibility
 
-This add-on will work with:
-
-* Advanced Custom Fields version 4.3.5 and up (including ACF 5)
-* Advanced Custom Fields version 3 and bellow
-
+This add-on will work with ACF 3 and 4
 
 ### Installation
 
