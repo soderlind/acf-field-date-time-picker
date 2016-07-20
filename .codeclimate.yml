@@ -1,0 +1,28 @@
+---
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+        - php
+    exclude_paths:
+      - date-time-picker*.php
+  eslint:
+    enabled: false
+    env:
+      jquery: true
+  fixme:
+    enabled: true
+  phpcodesniffer:
+    enabled: true
+    config:
+      standard: "WordPress-Core"
+ratings:
+  paths:
+    - "**.js"
+    - "**.php"
+exclude_paths:
+  - node_modules/**/*
+  - languages/**
+  - css/**
+  - js/**
