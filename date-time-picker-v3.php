@@ -19,7 +19,6 @@ class ACFFieldDateTimePicker extends acf_Field {
 	*-------------------------------------------------------------------------------------*/
 
 	function __construct( $parent ) {
-
 		// do not delete!
 		parent::__construct( $parent );
 
