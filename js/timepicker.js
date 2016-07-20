@@ -28,11 +28,12 @@ acf = acf || {};
         acf.add_action('ready append', function ($el) {
 
             acf.get_fields({ type : 'date_time_picker'}, $el).each(function () {
-                var input = $('input', $(this)),
+                // var input = $('input', $(this)),
+                var input = $(this).find('input'),
                     is_timeonly = (input.attr('data-date_format') == undefined),
                     date_format = (input.attr('data-date_format') != undefined) ? input.attr('data-date_format') : 'mm/dd/yy',
                     time_format = input.attr('data-time_format'),
-                    has_ampm = (input.attr('data-time_format').search(/t/i) != -1);
+                    has_ampm = (input.attr('data-date_format') != undefined) ? (input.attr('data-time_format').search(/t/i) != -1) : false;
 
                 //don't apply datepicker to clone field (check for different class names to enhance compatibility with older acf versions)
                 if (input.parents('.acf-row.acf-clone').length || input.parents('.acf-row.clone, .acf-clone').length) {
