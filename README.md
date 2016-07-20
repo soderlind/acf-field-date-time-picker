@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/soderlind/acf-debug-list-enqueued-scripts.svg?branch=master)](https://travis-ci.org/soderlind/acf-debug-list-enqueued-scripts) [![Code Climate](https://codeclimate.com/github/soderlind/acf-field-date-time-picker/badges/gpa.svg)](https://codeclimate.com/github/soderlind/acf-field-date-time-picker)
+[![Build Status](https://travis-ci.org/soderlind/acf-field-date-time-picker.svg?branch=master)](https://travis-ci.org/soderlind/acf-field-date-time-picker) [![Code Climate](https://codeclimate.com/github/soderlind/acf-field-date-time-picker/badges/gpa.svg)](https://codeclimate.com/github/soderlind/acf-field-date-time-picker)
 # ACF  Date and Time Picker Field
 
 Adds a 'Date and Time Picker' field type for the [Advanced Custom Fields](http://wordpress.org/extend/plugins/advanced-custom-fields/) WordPress plugin.
