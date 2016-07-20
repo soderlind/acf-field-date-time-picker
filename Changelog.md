@@ -1,76 +1,75 @@
 # Changelog
 
-### 2.0.18
-* Thanks to [kamilgrzegorczyk](https://github.com/kamilgrzegorczyk), Fixing clone field issue in repeater
+- [2016-07-20](https://github.com/soderlind/acf-field-date-time-picker/commit/87cc4fa): Update plugin to WPCS standards (committer: soderlind) 
+- [2016-07-20](https://github.com/soderlind/acf-field-date-time-picker/commit/fbe7f9a): Update plugin to WPCS standards. Remove ACF PRO support. (committer: soderlind) 
+- [2016-07-20](https://github.com/soderlind/acf-field-date-time-picker/commit/32f10b8): Add Travis (committer: soderlind) 
+- [2016-07-20](https://github.com/soderlind/acf-field-date-time-picker/commit/8470156): Add (committer: soderlind) 
+- [2016-07-20](https://github.com/soderlind/acf-field-date-time-picker/commit/8aa3ccd): Add code climate settings (committer: soderlind) 
+- [2016-07-20](https://github.com/soderlind/acf-field-date-time-picker/commit/29bdb65): Added grunt for git and svn deploy (committer: soderlind) 
+- [2016-07-20](https://github.com/soderlind/acf-field-date-time-picker/commit/1e8719c): Added wp plugin dir assets (committer: soderlind) 
+- [2016-07-20](https://github.com/soderlind/acf-field-date-time-picker/commit/13ce555): Deleted file, ACF PRO is no longer supported (committer: soderlind) 
+- [2016-07-20](https://github.com/soderlind/acf-field-date-time-picker/commit/1890870): Renamed files (committer: soderlind) 
+- [2016-03-22](https://github.com/soderlind/acf-field-date-time-picker/commit/5368ace): Changed the method of selecting the input elements so that it works on append action (committer: Gareth Chidgey) 
+- [2016-03-22](https://github.com/soderlind/acf-field-date-time-picker/commit/5148ff7): Cleaning up JS only, no functional change (committer: Gareth Chidgey) 
+- [2016-03-22](https://github.com/soderlind/acf-field-date-time-picker/commit/b514150): Cleaning up JS only, no functional change (committer: Gareth Chidgey) 
+- [2016-03-22](https://github.com/soderlind/acf-field-date-time-picker/commit/052210e): Cleaning up PHP, making sure that the path works correctly when symlinked in development, completing missing documentation (committer: Gareth Chidgey) 
+- [2015-11-13](https://github.com/soderlind/acf-field-date-time-picker/commit/b83d3f8): add composer.json (committer: Lukas Besch) 
+- [2015-01-23](https://github.com/soderlind/acf-field-date-time-picker/commit/3be603f): Fixes Issue #71 (committer: Ryan J. Bonnell) 
+- [2014-12-31](https://github.com/soderlind/acf-field-date-time-picker/commit/f19640c): Repeater field compatibility bugfix (committer: jpavlicek) 
+- [2014-09-23](https://github.com/soderlind/acf-field-date-time-picker/commit/4a27791): Increase tested version to 4.0 (committer: soderlind) 
+- [2014-09-23](https://github.com/soderlind/acf-field-date-time-picker/commit/44babc1): Fixing clone field issue in repeater (committer: soderlind) 
+- [2014-09-17](https://github.com/soderlind/acf-field-date-time-picker/commit/30ed1d8): Update timepicker.js (committer: Kamil Grzegorczyk) 
+- [2014-09-06](https://github.com/soderlind/acf-field-date-time-picker/commit/7bdd204): Fix Backend Timestamp handling -- tested up WordPress 4.0 (committer: Leo Caseiro) 
+- [2014-08-15](https://github.com/soderlind/acf-field-date-time-picker/commit/ff39048): Added link to WordPress plugin directory (committer: soderlind) 
+- [2014-08-15](https://github.com/soderlind/acf-field-date-time-picker/commit/44a9ba5): Fix Undefined property: acf_field_date_time_picker::$domain (committer: soderlind) 
+- [2014-08-15](https://github.com/soderlind/acf-field-date-time-picker/commit/ea1e488): Link to Changelog.md (committer: soderlind) 
+- [2014-08-15](https://github.com/soderlind/acf-field-date-time-picker/commit/cb704e0): Including Changelog.md (committer: soderlind) 
+- [2014-08-15](https://github.com/soderlind/acf-field-date-time-picker/commit/7f7bdb0): Added link to Changelog.md (committer: soderlind) 
+- [2014-08-15](https://github.com/soderlind/acf-field-date-time-picker/commit/a6a5ba6): Added changelog (committer: soderlind) 
+- [2014-08-14](https://github.com/soderlind/acf-field-date-time-picker/commit/2866e28): Fix Undefined property: acf_field_date_time_picker::$domain (committer: Bryan Channon) 
+- [2014-08-12](https://github.com/soderlind/acf-field-date-time-picker/commit/88e64b9): problem commiting to svn, had to bump the version number (committer: soderlind) 
+- [2014-08-12](https://github.com/soderlind/acf-field-date-time-picker/commit/3a3664b): svn problem, had to bump version (committer: soderlind) 
+- [2014-08-12](https://github.com/soderlind/acf-field-date-time-picker/commit/fb05458): the plugin now works with ACF 5.0 (committer: soderlind) 
+- [2014-08-12](https://github.com/soderlind/acf-field-date-time-picker/commit/e620121): updated language files (committer: soderlind) 
+- [2014-08-05](https://github.com/soderlind/acf-field-date-time-picker/commit/049bfa1): Update README.md (committer: Per Søderlind) 
+- [2014-07-28](https://github.com/soderlind/acf-field-date-time-picker/commit/1f02dd6): Fixed a css bug where a regular DatePicker field would be visible if shown with a Date and Timepicker field (committer: Yan Knudtskov Nielsen) 
+- [2014-07-21](https://github.com/soderlind/acf-field-date-time-picker/commit/a193ac4): Minor bug fix (committer: Yan Knudtskov Nielsen) 
+- [2014-07-21](https://github.com/soderlind/acf-field-date-time-picker/commit/9dcdea4): Added a minor bugfix, ln 379 need a / for the scandir (committer: Yan Knudtskov Nielsen) 
+- [2014-07-20](https://github.com/soderlind/acf-field-date-time-picker/commit/98f3d2c): Finally figued out that you had to add the load_value in order to display value properly in the frontend (committer: Yan Knudtskov Nielsen) 
+- [2014-07-20](https://github.com/soderlind/acf-field-date-time-picker/commit/8b91dbe): Made frontend work (committer: Yan Knudtskov Nielsen) 
+- [2014-07-20](https://github.com/soderlind/acf-field-date-time-picker/commit/28f1f3e): Figued out why the options field doesn&#x27;t save. Bug fixed (committer: Yan Knudtskov Nielsen) 
+- [2014-07-20](https://github.com/soderlind/acf-field-date-time-picker/commit/4614411): Updated to version 5.0/PRO - I can&#x27;t seem to make the field save the options values, perhaps someone else can figure out whats wrong? (committer: Yan Knudtskov Nielsen) 
+- [2014-05-05](https://github.com/soderlind/acf-field-date-time-picker/commit/adfafe6): Added new languages/acf-field-date-time-picker.po file (committer: soderlind) 
+- [2014-03-19](https://github.com/soderlind/acf-field-date-time-picker/commit/0c4dd8d): Fixed compatibility bug with ACF 4.3.5 (committer: soderlind) 
+- [2013-11-27](https://github.com/soderlind/acf-field-date-time-picker/commit/b6c8185): vadded support for date format dd/mm/yy (committer: soderlind) 
+- [2013-11-26](https://github.com/soderlind/acf-field-date-time-picker/commit/607c005): added support for date format  dd/mm/yy (committer: soderlind) 
+- [2013-11-26](https://github.com/soderlind/acf-field-date-time-picker/commit/15a6972): fixed syntax error (committer: soderlind) 
+- [2013-11-24](https://github.com/soderlind/acf-field-date-time-picker/commit/fa86b13): Fixing check for a valid timestamp (committer: John T Bonaccorsi) 
+- [2013-08-20](https://github.com/soderlind/acf-field-date-time-picker/commit/a40ce33): Added option to retrive field values as a timestamp (committer: soderlind) 
+- [2013-08-12](https://github.com/soderlind/acf-field-date-time-picker/commit/2b69299): removed &quot;value&quot; from defaults (committer: soderlind) 
+- [2013-08-10](https://github.com/soderlind/acf-field-date-time-picker/commit/f0d0819): Works with ACF 4.2.0 (committer: soderlind) 
+- [2013-08-10](https://github.com/soderlind/acf-field-date-time-picker/commit/0682dd9): works with ACF 4.2.0 (committer: soderlind) 
+- [2013-07-10](https://github.com/soderlind/acf-field-date-time-picker/commit/c322c9f): Update README.md (committer: Per Søderlind) 
+- [2013-05-02](https://github.com/soderlind/acf-field-date-time-picker/commit/b713d19): Adds option to store the date and time field as a UNIX timestamp or not (committer: soderlind) 
+- [2013-04-26](https://github.com/soderlind/acf-field-date-time-picker/commit/2746a58): Bug fix. 2.0.6 assumed that the stored date and time was in UNIX timestamp format. 2.0.7 will check and only convert if the date and time is. (committer: soderlind) 
+- [2013-04-25](https://github.com/soderlind/acf-field-date-time-picker/commit/d672282): SChanged how the Date and Time Picker field is triggered when ACF adds a new Date and Time Picker field to the DOM. Date and Time Picker now saves the date and time as an UNIX timestamp. (committer: soderlind) 
+- [2013-04-22](https://github.com/soderlind/acf-field-date-time-picker/commit/2c5016c): When enqueuing JavaScripts, replaced dependecy of jquery-ui-datepicker with acf-datepicker (committer: soderlind) 
+- [2013-04-12](https://github.com/soderlind/acf-field-date-time-picker/commit/76c8e29): update readme.md (committer: soderlind) 
+- [2013-04-12](https://github.com/soderlind/acf-field-date-time-picker/commit/8d5e51d): Added FAQ to readme.md (committer: soderlind) 
+- [2013-04-08](https://github.com/soderlind/acf-field-date-time-picker/commit/33c5bfa): Updated JavaScript language detection and loading (committer: soderlind) 
+- [2013-04-08](https://github.com/soderlind/acf-field-date-time-picker/commit/dc1b798): Fixed bug with repeater field and added support for including the field in a theme (committer: soderlind) 
+- [2013-04-06](https://github.com/soderlind/acf-field-date-time-picker/commit/887fe53): re-submit (committer: soderlind) 
+- [2013-04-06](https://github.com/soderlind/acf-field-date-time-picker/commit/ee7c5f9): minor bug fix (committer: soderlind) 
+- [2013-04-06](https://github.com/soderlind/acf-field-date-time-picker/commit/276e4de): Udated readme.txt (committer: soderlind) 
+- [2013-04-06](https://github.com/soderlind/acf-field-date-time-picker/commit/3a8d369): Added link to soderlind.no (committer: soderlind) 
+- [2013-04-06](https://github.com/soderlind/acf-field-date-time-picker/commit/898b0ac): Sync between github and WordPress svn repository (committer: soderlind) 
+- [2013-04-06](https://github.com/soderlind/acf-field-date-time-picker/commit/4174b10): updated .gitignore (committer: soderlind) 
+- [2013-04-05](https://github.com/soderlind/acf-field-date-time-picker/commit/706bdd2): And here&#x27;s the files (committer: soderlind) 
+- [2013-04-05](https://github.com/soderlind/acf-field-date-time-picker/commit/8d41285): Total rewrite based on the acf-field-type-template (committer: soderlind) 
+- [2013-03-19](https://github.com/soderlind/acf-field-date-time-picker/commit/a9f8d7a): added file (committer: soderlind) 
+- [2013-03-19](https://github.com/soderlind/acf-field-date-time-picker/commit/368a111): added localization (committer: soderlind) 
+- [2013-03-19](https://github.com/soderlind/acf-field-date-time-picker/commit/1aa98be): Initial version (committer: soderlind) 
+- [2013-03-19](https://github.com/soderlind/acf-field-date-time-picker/commit/046f1c4): minor fix (committer: soderlind) 
+- [2013-03-19](https://github.com/soderlind/acf-field-date-time-picker/commit/bff2b5b): Create README.md (committer: Per Søderlind) 
+- [2013-03-19](https://github.com/soderlind/acf-field-date-time-picker/commit/0f4079e): Initial version (committer: soderlind) 
 
-### 2.0.17
-* Thanks to [leocaseiro](https://github.com/leocaseiro), Fix Backend Timestamp handling: `render_field` and Tested Up WordPress 4.0
-
-### 2.0.16
-* Fix Undefined property: `acf_field_date_time_picker::$domain`
-
-### 2.0.15
-* Thanks to [yanknudtskov](https://github.com/yanknudtskov), the plugin now works with ACF 5.0
-
-### 2.0.14
-* Added new `languages/acf-field-date-time-picker.po` file (note, renamed the language file)
-
-### 2.0.13
-* Fixed compatibility bug with ACF 4.3.5
-* *NOTE: 2.0.13 requires ACF 4.3.5 or later*
-
-### 2.0.12
-* Added support for date format `dd/mm/yy`
-* Bugfix
-
-### 2.0.11
-* Added option to retrive field values, using `the_field()` and `get_field()`, as a timestamp
-
-### 2.0.10
-* Removed "value" from defaults
-
-### 2.0.9
-* Thanks to [flahertydaf](http://support.advancedcustomfields.com/forums/topic/custom-fields-get-emptied-when-publishing/page/2/#post-2325), the plugin in now working with the latest ACF version
-* Replaced `DateTime::createFromFormat` (PHP 5 >= 5.3.0), with `strtotime`
-* minor bugfixes
-
-### 2.0.8
-* Adds option to store the date and time field as a UNIX timestamp or not.
-
-### 2.0.7
-* Bug fix. 2.0.6 assumed that the stored date and time was in UNIX timestamp format. 2.0.7 will check and only convert if the date and time is.
-
-### 2.0.6
-* Changed how the Date and Time Picker field is triggered when ACF adds a new Date and Time Picker field to the DOM
-* Saves the Date and Time Picker field as an UNIX timestamp to MySQL. Use the PHP [date](http://php.net/manual/en/function.date.php) function  when you use it in your theme.
-
-### 2.0.5
-* When enqueuing JavaScripts, replaced dependecy of jquery-ui-datepicker with acf-datepicker
-
-### 2.0.4
-* Updated JavaScript [language detection and loading](http://soderlind.no/time-picker-field-for-advanced-custom-fields/#localization)
-
-### 2.0.3
-* Fixed Repeater field bug
-* Added support for including the field in a theme
-
-### 2.0.2
-* Updated readme.txt
-
-### 2.0.1
-* Minor fix
-
-### 2.0.0.beta
-* Total rewrite, based on the [acf-field-type-template](https://github.com/elliotcondon/acf-field-type-template). Works with ACF v3 and ACF v4. In this beta you can only add the Date Time Picker field as a plugin (i.e. not as a template field).
-
-### 1.2.0
-* Updated jquery-ui-timepicker-addon.js to the latest version (1.0.0) and added localization support.
-
-### 1.1.1
-* Fixed a small bug
-
-### 1.1
-* Change name to Date and Time Picker to reflect the new option to select between Date and Time picker or Time Picker only. Thanks to Wilfrid for point this out (not sure why I didn’t include it in 1.0)
-
-### 1.0
-* Initial version

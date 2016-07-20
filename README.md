@@ -4,7 +4,7 @@ Adds a 'Date and Time Picker' field type for the [Advanced Custom Fields](http:/
 
 -----------------------
 
-### Thanks to [yanknudtskov](https://github.com/yanknudtskov), the plugin now works with ACF 5.0
+### ACF PRO 5.+ is no longer supported, ACF PRO [has its own date and time picker](https://www.advancedcustomfields.com/resources/date-time-picker/)
 
 ### Overview
 
