@@ -41,6 +41,22 @@ function my_register_fields()
 
 ### Frequently Asked Questions
 
+#### Updating to ACF PRO
+
+I got this quetion over at [AWP on Facebook](https://www.facebook.com/groups/advancedwp/permalink/1198240376904841/?comment_id=1198432300218982&notif_t=group_comment&notif_id=1469033404164280):
+
+
+>How does upgrading work? If someone starts with ACF and your plugin,
+then upgrades to ACF Pro, will their date/time custom field disappear?
+I understand the data will be maintained but wondering if the field
+will still be visible in WP admin.
+
+
+Updating to ACF PRO should work fine, ACF PRO has a compatibility add-on for this plugin, but test it on a non production environment first.
+
+Also, read the comments on this issue: [https://github.com/.../acf-field-date-time-picker/issues/103](https://github.com/.../acf-field-date-time-picker/issues/103)
+
+
 
 **How do I set the date and time format?**
 
