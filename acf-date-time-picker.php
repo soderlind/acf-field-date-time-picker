@@ -54,7 +54,7 @@ if ( ! class_exists( 'ACFFieldDateTimePickerPlugin' ) ) :
 		 * @created: 1/04/13
 		 */
 		function register_fields() {
-			require_once( 'date-time-picker-v4.php' );
+			require_once( 'date_time-picker-v4.php' );
 		}
 	}
 
