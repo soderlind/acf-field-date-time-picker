@@ -316,6 +316,54 @@ if ( ! class_exists( 'ACFFieldDateTimePicker' ) ) :
 			return strtr( (string) $time_format, $chars );
 		}
 
+    // added conversion functions to convert jQuery to strftime() format
+    function js_to_strftime_dateformat( $date_format ) {
+
+      $chars = array(
+        // Day
+        'dd' => '%d',
+        'd'  => '%e',
+        'DD' => '%A',
+        'D'  => '%a',
+        'oo' => '%j',
+        'o'  => '%j',
+        // Month
+        'mm' => '%m',
+        'm'  => '%m',
+        'MM' => '%B',
+        'M'  => '%b',
+        // Year
+        'yy' => '%Y',
+        'y'  => '%y',
+      );
+
+      return strtr( (string) $date_format, $chars );
+    }
+
+    function js_to_strftime_timeformat( $time_format ) {
+
+      $chars = array(
+        //hour
+        'HH' => '%H',
+        'H'  => '%H',
+        'hh' => '%I',
+        'h'  => '%I',
+        //minute
+        'mm' => '%M',
+        'm'  => '%M',
+        //second
+        'ss' => '%S',
+        's'  => '%S',
+        //am/pm
+        'TT' => '%p',
+        'T'  => '%p',
+        'tt' => '%p',
+        't'  => '%p',
+      );
+
+      return strtr( (string) $time_format, $chars );
+    }
+
 		function isValidTimeStamp( $timestamp ) {
 
 			return ( (string) (int) $timestamp === (string) $timestamp );
@@ -343,7 +391,18 @@ if ( ! class_exists( 'ACFFieldDateTimePicker' ) ) :
 				if ( preg_match( '/^dd?\//', $field['date_format'] ) ) { //if start with dd/ or d/ (not supported by strtotime())
 					$value = str_replace( '/', '-', $value );
 				}
-				$value = strtotime( $value );
+
+        // $value = strtotime( $value );
+
+        // strtotime() cannot parse non-English month or day names - new implementation using strptime()
+        if ( 'true' == $field['show_date'] ) {
+          $strf_format = $this->js_to_strftime_dateformat( $field['date_format'] ) . ' ' . $this->js_to_strftime_timeformat( $field['time_format'] );
+        } else {
+          $strf_format = $this->js_to_strftime_timeformat( $field['time_format'] );
+        }
+        $date_array = strptime( $value, $strf_format );
+        $value = mktime( $date_array['tm_hour'], $date_array['tm_min'], 0, $date_array['tm_mon'] + 1, $date_array['tm_mday'], $date_array['tm_year'] + 1900 );
+
 			}
 
 			return $value;
