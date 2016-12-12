@@ -3,8 +3,8 @@ Contributors: PerS
 Donate link: http://soderlind.no/donate/
 Tags: acf, custom field,datepicker,timepicker
 Requires at least: 3.6
-Tested up to: 4.5.3
-Stable tag: 2.1.1
+Tested up to: 4.7
+Stable tag: 2.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -128,6 +128,8 @@ The Date and Time Picker field is saved as an UNIX timestamp. Use the PHP [date]
 
 
 == Changelog ==
+= 2.1.2 =
+* Tested & found compatible with WP 4.7.
 = 2.1.1 =
 * Tested & found compatible with WP 4.6.
 = 2.1.0 =

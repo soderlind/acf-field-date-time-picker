@@ -112,6 +112,25 @@ if ( ! class_exists( 'ACFFieldDateTimePicker' ) ) :
 					?>
 				</td>
 			</tr>
+			<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_default_date">
+				<td class="label">
+					<label for=""><?php _e( 'Default date:', $this->domain ); ?></label>
+				</td>
+				<td>
+					<?php
+					do_action('acf/create_field', array(
+						'type'    => 'text',
+						'name'    => 'fields[' . $key . '][default_date',
+						'value'   => $field['default_date_'],
+						// 'layout'  => 'horizontal',
+						// 'choices' => array(
+						// 	'true'  => __( 'Yes', $this->domain ),
+						// 	'false' => __( 'No', $this->domain ),
+						// ),
+					));
+					?>
+				</td>
+			</tr>
 			<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_timeformat">
 				<td class="label">
 					<label><?php _e( 'Time Format', $this->domain ); ?></label>
@@ -137,6 +156,25 @@ if ( ! class_exists( 'ACFFieldDateTimePicker' ) ) :
 						)
 					));
 					*/
+					?>
+				</td>
+			</tr>
+			<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_default_time">
+				<td class="label">
+					<label for=""><?php _e( 'Default time:', $this->domain ); ?></label>
+				</td>
+				<td>
+					<?php
+					do_action('acf/create_field', array(
+						'type'    => 'text',
+						'name'    => 'fields[' . $key . '][default_time]',
+						'value'   => $field['default_time'],
+						// 'layout'  => 'horizontal',
+						// 'choices' => array(
+						// 	'true'  => __( 'Yes', $this->domain ),
+						// 	'false' => __( 'No', $this->domain ),
+						// ),
+					));
 					?>
 				</td>
 			</tr>
