@@ -1,8 +1,8 @@
 {
   "name": "acf-field-date-time-picker",
   "title": "Date and Time Picker Field",
-  "version": "2.1.1",
-  "git_tag": "2.1.1",
+  "version": "2.1.3",
+  "git_tag": "2.1.3",
   "description": "Date and Time Picker field for Advanced Custom Fields",
   "main": "acf-date-time-picker.php",
   "scripts": {
