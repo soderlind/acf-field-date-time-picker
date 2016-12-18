@@ -1,8 +1,7 @@
 <?php
 
 if ( ! class_exists( 'ACFFieldDateTimePicker' ) ) :
-	class ACFFieldDateTimePicker extends acf_field
-	{
+	class ACFFieldDateTimePicker extends acf_field {
 		// vars
 		var $settings   // will hold info such as dir / path
 		, $defaults // will hold default field options
@@ -21,10 +20,9 @@ if ( ! class_exists( 'ACFFieldDateTimePicker' ) ) :
 			// vars
 			$this->name = 'date_time_picker';
 			$this->label = __( 'Date and Time Picker' );
-			$this->category = __( 'jQuery', $this->domain ); // Basic, Content, Choice, etc
-			$this->domain = 'acf-field-date-time-picker';
+			$this->category = __( 'jQuery', 'acf-field-date-time-picker' ); // Basic, Content, Choice, etc
 			$this->defaults = array(
-				'label'             => __( 'Choose Time', $this->domain ),
+				'label'             => __( 'Choose Time', 'acf-field-date-time-picker' ),
 				'time_format'       => 'h:mm tt',
 				'show_date'         => 'true',
 				'date_format'       => 'm/d/y',
@@ -39,8 +37,8 @@ if ( ! class_exists( 'ACFFieldDateTimePicker' ) ) :
 
 			// settings
 			$this->settings = array(
-				'path'    => apply_filters( 'acf/helpers/get_path', __FILE__ ),
-				'dir'     => apply_filters( 'acf/helpers/get_dir', __FILE__ ),
+				'path'    => apply_filters( 'acf/helpers/get_path', __FILE__ ), // @codingStandardsIgnoreLine
+				'dir'     => apply_filters( 'acf/helpers/get_dir', __FILE__ ), // @codingStandardsIgnoreLine
 				'version' => ACFFIELDDATETIMEPICKER_VERSION,
 			);
 		}
@@ -64,18 +62,18 @@ if ( ! class_exists( 'ACFFieldDateTimePicker' ) ) :
 			?>
 			<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_choice">
 				<td class="label">
-					<label for=""><?php _e( 'Date and Time Picker?', $this->domain ); ?></label>
+					<label for=""><?php _e( 'Date and Time Picker?', 'acf-field-date-time-picker' ); ?></label>
 				</td>
 				<td>
 					<?php
-					do_action('acf/create_field', array(
+					do_action('acf/create_field', array( // @codingStandardsIgnoreLine
 						'type'    => 'radio',
 						'name'    => 'fields[' . $key . '][show_date]',
 						'value'   => $field['show_date'],
 						'layout'  => 'horizontal',
 						'choices' => array(
-							'true'  => __( 'Date and Time Picker', $this->domain ),
-							'false' => __( 'Time Picker', $this->domain ),
+							'true'  => __( 'Date and Time Picker', 'acf-field-date-time-picker' ),
+							'false' => __( 'Time Picker', 'acf-field-date-time-picker' ),
 						),
 					));
 					?>
@@ -83,12 +81,12 @@ if ( ! class_exists( 'ACFFieldDateTimePicker' ) ) :
 			</tr>
 			<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_dateformat">
 				<td class="label">
-					<label><?php _e( 'Date Format', $this->domain ); ?></label>
-					<p class="description"><?php printf( __( 'eg. mm/dd/yy. read more about <a href="%s" target="_blank">formatting  date</a>', $this->domain ), 'http://docs.jquery.com/UI/Datepicker/formatDate' ); ?></p>
+					<label><?php _e( 'Date Format', 'acf-field-date-time-picker' ); ?></label>
+					<p class="description"><?php printf( __( 'eg. mm/dd/yy. read more about <a href="%s" target="_blank">formatting  date</a>', 'acf-field-date-time-picker' ), 'http://docs.jquery.com/UI/Datepicker/formatDate' ); ?></p>
 				</td>
 				<td>
 					<?php
-					do_action('acf/create_field', array(
+					do_action('acf/create_field', array( // @codingStandardsIgnoreLine
 						'type'  => 'text',
 						'name'  => 'fields[' . $key . '][date_format]',
 						'value' => $field['date_format'],
@@ -114,12 +112,12 @@ if ( ! class_exists( 'ACFFieldDateTimePicker' ) ) :
 			</tr>
 			<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_timeformat">
 				<td class="label">
-					<label><?php _e( 'Time Format', $this->domain ); ?></label>
-					<p class="description"><?php printf( __( 'eg. hh:mm. read more about <a href="%s" target="_blank">formatting  time</a>', $this->domain ), 'http://trentrichardson.com/examples/timepicker/#tp-formatting' ); ?></p>
+					<label><?php _e( 'Time Format', 'acf-field-date-time-picker' ); ?></label>
+					<p class="description"><?php printf( __( 'eg. hh:mm. read more about <a href="%s" target="_blank">formatting  time</a>', 'acf-field-date-time-picker' ), 'http://trentrichardson.com/examples/timepicker/#tp-formatting' ); ?></p>
 				</td>
 				<td>
 					<?php
-					do_action('acf/create_field', array(
+					do_action('acf/create_field', array( // @codingStandardsIgnoreLine
 						'type'  => 'text',
 						'name'  => 'fields[' . $key . '][time_format]',
 						'value' => $field['time_format'],
@@ -142,18 +140,18 @@ if ( ! class_exists( 'ACFFieldDateTimePicker' ) ) :
 			</tr>
 			<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_week_number">
 				<td class="label">
-					<label for=""><?php _e( 'Display Week Number?', $this->domain ); ?></label>
+					<label for=""><?php _e( 'Display Week Number?', 'acf-field-date-time-picker' ); ?></label>
 				</td>
 				<td>
 					<?php
-					do_action('acf/create_field', array(
+					do_action('acf/create_field', array( // @codingStandardsIgnoreLine
 						'type'    => 'radio',
 						'name'    => 'fields[' . $key . '][show_week_number]',
 						'value'   => $field['show_week_number'],
 						'layout'  => 'horizontal',
 						'choices' => array(
-							'true'  => __( 'Yes', $this->domain ),
-							'false' => __( 'No', $this->domain ),
+							'true'  => __( 'Yes', 'acf-field-date-time-picker' ),
+							'false' => __( 'No', 'acf-field-date-time-picker' ),
 						),
 					));
 					?>
@@ -161,18 +159,18 @@ if ( ! class_exists( 'ACFFieldDateTimePicker' ) ) :
 			</tr>
 			<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_week_number">
 				<td class="label">
-					<label for=""><?php _e( 'Time Picker style?', $this->domain ); ?></label>
+					<label for=""><?php _e( 'Time Picker style?', 'acf-field-date-time-picker' ); ?></label>
 				</td>
 				<td>
 					<?php
-					do_action('acf/create_field', array(
+					do_action('acf/create_field', array( // @codingStandardsIgnoreLine
 						'type'    => 'radio',
 						'name'    => 'fields[' . $key . '][picker]',
 						'value'   => $field['picker'],
 						'layout'  => 'horizontal',
 						'choices' => array(
-							'slider' => __( 'Slider', $this->domain ),
-							'select' => __( 'Dropdown', $this->domain ),
+							'slider' => __( 'Slider', 'acf-field-date-time-picker' ),
+							'select' => __( 'Dropdown', 'acf-field-date-time-picker' ),
 						),
 					));
 					?>
@@ -180,19 +178,19 @@ if ( ! class_exists( 'ACFFieldDateTimePicker' ) ) :
 			</tr>
 			<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_week_number">
 				<td class="label">
-					<label for=""><?php _e( 'Save as timestamp?', $this->domain ); ?></label>
-					<p class="description"><?php printf( __( 'Most users should leave this untouched, only set it to "No" if you need a date and time format not supported by <a href="%s" target="_blank">strtotime</a>', $this->domain ), 'http://php.net/manual/en/function.strtotime.php' ); ?></p>
+					<label for=""><?php _e( 'Save as timestamp?', 'acf-field-date-time-picker' ); ?></label>
+					<p class="description"><?php printf( __( 'Most users should leave this untouched, only set it to "No" if you need a date and time format not supported by <a href="%s" target="_blank">strtotime</a>', 'acf-field-date-time-picker' ), 'http://php.net/manual/en/function.strtotime.php' ); ?></p>
 				</td>
 				<td>
 					<?php
-					do_action('acf/create_field', array(
+					do_action('acf/create_field', array( // @codingStandardsIgnoreLine
 						'type'    => 'radio',
 						'name'    => 'fields[' . $key . '][save_as_timestamp]',
 						'value'   => $field['save_as_timestamp'],
 						'layout'  => 'horizontal',
 						'choices' => array(
-							'true'  => __( 'Yes', $this->domain ),
-							'false' => __( 'No', $this->domain ),
+							'true'  => __( 'Yes', 'acf-field-date-time-picker' ),
+							'false' => __( 'No', 'acf-field-date-time-picker' ),
 						),
 					));
 					?>
@@ -200,20 +198,20 @@ if ( ! class_exists( 'ACFFieldDateTimePicker' ) ) :
 			</tr>
 			<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_week_number">
 				<td class="label">
-					<label for=""><?php _e( 'Get field as timestamp?', $this->domain ); ?></label>
-					<p class="description"><?php printf(__( 'Most users should leave this untouched, only set it to "Yes" if you need get the  date and time field as a timestamp using  <a href="%s" target="_blank">the_field()</a> or <a href="%s" target="_blank">get_field()</a> ', $this->domain ), 'http://www.advancedcustomfields.com/resources/functions/the_field/',
+					<label for=""><?php _e( 'Get field as timestamp?', 'acf-field-date-time-picker' ); ?></label>
+					<p class="description"><?php printf( __( 'Most users should leave this untouched, only set it to "Yes" if you need get the  date and time field as a timestamp using  <a href="%1$s" target="_blank">the_field()</a> or <a href="%2$s" target="_blank">get_field()</a> ', 'acf-field-date-time-picker' ), 'http://www.advancedcustomfields.com/resources/functions/the_field/',
 					'http://www.advancedcustomfields.com/resources/functions/get_field/'); ?></p>
 				</td>
 				<td>
 					<?php
-					do_action('acf/create_field', array(
+					do_action('acf/create_field', array( // @codingStandardsIgnoreLine
 						'type'    => 'radio',
 						'name'    => 'fields[' . $key . '][get_as_timestamp]',
 						'value'   => $field['get_as_timestamp'],
 						'layout'  => 'horizontal',
 						'choices' => array(
-							'true'  => __( 'Yes', $this->domain ),
-							'false' => __( 'No', $this->domain ),
+							'true'  => __( 'Yes', 'acf-field-date-time-picker' ),
+							'false' => __( 'No', 'acf-field-date-time-picker' ),
 						),
 					));
 					?>
@@ -387,18 +385,18 @@ if ( ! class_exists( 'ACFFieldDateTimePicker' ) ) :
 
 			if ( ! $has_locale && 'en' != $js_locale ) {
 				$timepicker_locale = array(
-					'closeText'    => __( 'Done', $this->domain ),
-					'currentText'  => __( 'Today', $this->domain ),
-					'prevText'     => __( 'Prev', $this->domain ),
-					'nextText'     => __( 'Next', $this->domain ),
-					'monthStatus'  => __( 'Show a different month', $this->domain ),
-					'weekHeader'   => __( 'Wk', $this->domain ),
-					'timeText'     => __( 'Time', $this->domain ),
-					'hourText'     => __( 'Hour', $this->domain ),
-					'minuteText'   => __( 'Minute', $this->domain ),
-					'secondText'   => __( 'Second', $this->domain ),
-					'millisecText' => __( 'Millisecond', $this->domain ),
-					'timezoneText' => __( 'Time Zone', $this->domain ),
+					'closeText'    => __( 'Done', 'acf-field-date-time-picker' ),
+					'currentText'  => __( 'Today', 'acf-field-date-time-picker' ),
+					'prevText'     => __( 'Prev', 'acf-field-date-time-picker' ),
+					'nextText'     => __( 'Next', 'acf-field-date-time-picker' ),
+					'monthStatus'  => __( 'Show a different month', 'acf-field-date-time-picker' ),
+					'weekHeader'   => __( 'Wk', 'acf-field-date-time-picker' ),
+					'timeText'     => __( 'Time', 'acf-field-date-time-picker' ),
+					'hourText'     => __( 'Hour', 'acf-field-date-time-picker' ),
+					'minuteText'   => __( 'Minute', 'acf-field-date-time-picker' ),
+					'secondText'   => __( 'Second', 'acf-field-date-time-picker' ),
+					'millisecText' => __( 'Millisecond', 'acf-field-date-time-picker' ),
+					'timezoneText' => __( 'Time Zone', 'acf-field-date-time-picker' ),
 					'isRTL'        => $wp_locale->is_rtl(),
 				);
 			}

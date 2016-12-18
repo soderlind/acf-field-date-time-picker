@@ -25,9 +25,8 @@ class ACFFieldDateTimePicker extends acf_Field {
 		// set name / title
 		$this->name = 'date_time_picker';
 		$this->title = __( 'Date and Time Picker' );
-		$this->domain = 'acf-field-date-time-picker';
 		$this->defaults = array(
-			'label'             => __( 'Choose Time', $this->domain ),
+			'label'             => __( 'Choose Time', 'acf-field-date-time-picker' ),
 			'time_format'       => 'hh:mm',
 			'show_date'         => 'true',
 			'date_format'       => 'yy-mm-dd',
@@ -113,7 +112,7 @@ class ACFFieldDateTimePicker extends acf_Field {
 		?>
 		<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_choice">
 			<td class="label">
-				<label for=""><?php _e( 'Date and Time Picker?', $this->domain ); ?></label>
+				<label for=""><?php _e( 'Date and Time Picker?', 'acf-field-date-time-picker' ); ?></label>
 			</td>
 			<td>
 				<?php
@@ -123,8 +122,8 @@ class ACFFieldDateTimePicker extends acf_Field {
 					'value'   => $field['show_date'],
 					'layout'  => 'horizontal',
 					'choices' => array(
-						'true'  => __( 'Date and Time Picker', $this->domain ),
-						'false' => __( 'Time Picker', $this->domain ),
+						'true'  => __( 'Date and Time Picker', 'acf-field-date-time-picker' ),
+						'false' => __( 'Time Picker', 'acf-field-date-time-picker' ),
 					),
 				));
 				?>
@@ -132,8 +131,8 @@ class ACFFieldDateTimePicker extends acf_Field {
 		</tr>
 		<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_dateformat">
 			<td class="label">
-				<label><?php _e( 'Date Format', $this->domain ); ?></label>
-				<p class="description"><?php _e( 'eg. mm/dd/yy. read more about', $this->domain ); ?> <a href="http://docs.jquery.com/UI/Datepicker/formatDate">formatDate</a></p>
+				<label><?php _e( 'Date Format', 'acf-field-date-time-picker' ); ?></label>
+				<p class="description"><?php _e( 'eg. mm/dd/yy. read more about', 'acf-field-date-time-picker' ); ?> <a href="http://docs.jquery.com/UI/Datepicker/formatDate">formatDate</a></p>
 			</td>
 			<td>
 				<?php
@@ -147,8 +146,8 @@ class ACFFieldDateTimePicker extends acf_Field {
 		</tr>
 		<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_timeformat">
 			<td class="label">
-				<label><?php _e( 'Time Format', $this->domain ); ?></label>
-				<p class="description"><?php printf( __( 'eg. hh:mm. read more about <a href="%s" target="_blank">formatting  time</a>', $this->domain ), 'http://trentrichardson.com/examples/timepicker/#tp-formatting' ); ?></p>
+				<label><?php _e( 'Time Format', 'acf-field-date-time-picker' ); ?></label>
+				<p class="description"><?php printf( __( 'eg. hh:mm. read more about <a href="%s" target="_blank">formatting  time</a>', 'acf-field-date-time-picker' ), 'http://trentrichardson.com/examples/timepicker/#tp-formatting' ); ?></p>
 			</td>
 			<td>
 				<?php
@@ -162,7 +161,7 @@ class ACFFieldDateTimePicker extends acf_Field {
 		</tr>
 		<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_week_number">
 			<td class="label">
-				<label for=""><?php _e( 'Display Week Number?', $this->domain ); ?></label>
+				<label for=""><?php _e( 'Display Week Number?', 'acf-field-date-time-picker' ); ?></label>
 			</td>
 			<td>
 				<?php
@@ -172,8 +171,8 @@ class ACFFieldDateTimePicker extends acf_Field {
 					'value'   => $field['show_week_number'],
 					'layout'  => 'horizontal',
 					'choices' => array(
-						'true' => __( 'Yes', $this->domain ),
-						'false' => __( 'No', $this->domain ),
+						'true' => __( 'Yes', 'acf-field-date-time-picker' ),
+						'false' => __( 'No', 'acf-field-date-time-picker' ),
 					),
 				));
 				?>
@@ -181,7 +180,7 @@ class ACFFieldDateTimePicker extends acf_Field {
 		</tr>
 		<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_week_number">
 			<td class="label">
-				<label for=""><?php _e( 'Time Picker Style?', $this->domain ); ?></label>
+				<label for=""><?php _e( 'Time Picker Style?', 'acf-field-date-time-picker' ); ?></label>
 			</td>
 			<td>
 				<?php
@@ -191,8 +190,8 @@ class ACFFieldDateTimePicker extends acf_Field {
 					'value'   => $field['picker'],
 					'layout'  => 'horizontal',
 					'choices' => array(
-						'slider' => __( 'Slider', $this->domain ),
-						'select' => __( 'Dropdown', $this->domain ),
+						'slider' => __( 'Slider', 'acf-field-date-time-picker' ),
+						'select' => __( 'Dropdown', 'acf-field-date-time-picker' ),
 					),
 				));
 				?>
@@ -200,8 +199,8 @@ class ACFFieldDateTimePicker extends acf_Field {
 		</tr>
 		<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_week_number">
 			<td class="label">
-				<label for=""><?php _e( 'Save as timestamp?', $this->domain ); ?></label>
-				<p class="description"><?php printf( __( 'Most users should leave this untouched, only set it to "No" if you need a date and time format not supported by <a href="%s" target="_blank">strtotime</a>', $this->domain ), 'http://php.net/manual/en/function.strtotime.php' ); ?></p>
+				<label for=""><?php _e( 'Save as timestamp?', 'acf-field-date-time-picker' ); ?></label>
+				<p class="description"><?php printf( __( 'Most users should leave this untouched, only set it to "No" if you need a date and time format not supported by <a href="%s" target="_blank">strtotime</a>', 'acf-field-date-time-picker' ), 'http://php.net/manual/en/function.strtotime.php' ); ?></p>
 			</td>
 			<td>
 				<?php
@@ -211,8 +210,8 @@ class ACFFieldDateTimePicker extends acf_Field {
 					'value'   => $field['save_as_timestamp'],
 					'layout'  => 'horizontal',
 					'choices' => array(
-						'true'  => __( 'Yes', $this->domain ),
-						'false' => __( 'No', $this->domain ),
+						'true'  => __( 'Yes', 'acf-field-date-time-picker' ),
+						'false' => __( 'No', 'acf-field-date-time-picker' ),
 					),
 				));
 				?>
@@ -220,8 +219,8 @@ class ACFFieldDateTimePicker extends acf_Field {
 		</tr>
 		<tr class="field_option field_option_<?php echo $this->name; ?> timepicker_week_number">
 			<td class="label">
-				<label for=""><?php _e( 'Get field as a timestamp?', $this->domain ); ?></label>
-				<p class="description"><?php printf(__( 'Most users should leave this untouched, only set it to "Yes" if you need get the  date and time field as a timestamp using  <a href="%s" target="_blank">the_field()</a> or <a href="%s" target="_blank">get_field()</a> ', $this->domain ), 'http://www.advancedcustomfields.com/resources/functions/the_field/',
+				<label for=""><?php _e( 'Get field as a timestamp?', 'acf-field-date-time-picker' ); ?></label>
+				<p class="description"><?php printf( __( 'Most users should leave this untouched, only set it to "Yes" if you need get the  date and time field as a timestamp using  <a href="%1$s" target="_blank">the_field()</a> or <a href="%2$s" target="_blank">get_field()</a> ', 'acf-field-date-time-picker' ), 'http://www.advancedcustomfields.com/resources/functions/the_field/',
 				'http://www.advancedcustomfields.com/resources/functions/get_field/'); ?></p>
 			</td>
 			<td>
@@ -232,8 +231,8 @@ class ACFFieldDateTimePicker extends acf_Field {
 					'value'   => $field['get_as_timestamp'],
 					'layout'  => 'horizontal',
 					'choices' => array(
-						'true'  => __( 'Yes', $this->domain ),
-						'false' => __( 'No', $this->domain ),
+						'true'  => __( 'Yes', 'acf-field-date-time-picker' ),
+						'false' => __( 'No', 'acf-field-date-time-picker' ),
 					),
 				));
 				?>
@@ -431,18 +430,18 @@ class ACFFieldDateTimePicker extends acf_Field {
 
 		if ( ! $has_locale && 'en' != $js_locale ) {
 			$timepicker_locale = array(
-				'closeText'    => __( 'Done', $this->domain ),
-				'currentText'  => __( 'Today', $this->domain ),
-				'prevText'     => __( 'Prev', $this->domain ),
-				'nextText'     => __( 'Next', $this->domain ),
-				'monthStatus'  => __( 'Show a different month', $this->domain ),
-				'weekHeader'   => __( 'Wk', $this->domain ),
-				'timeText'     => __( 'Time', $this->domain ),
-				'hourText'     => __( 'Hour', $this->domain ),
-				'minuteText'   => __( 'Minute', $this->domain ),
-				'secondText'   => __( 'Second', $this->domain ),
-				'millisecText' => __( 'Millisecond', $this->domain ),
-				'timezoneText' => __( 'Time Zone', $this->domain ),
+				'closeText'    => __( 'Done', 'acf-field-date-time-picker' ),
+				'currentText'  => __( 'Today', 'acf-field-date-time-picker' ),
+				'prevText'     => __( 'Prev', 'acf-field-date-time-picker' ),
+				'nextText'     => __( 'Next', 'acf-field-date-time-picker' ),
+				'monthStatus'  => __( 'Show a different month', 'acf-field-date-time-picker' ),
+				'weekHeader'   => __( 'Wk', 'acf-field-date-time-picker' ),
+				'timeText'     => __( 'Time', 'acf-field-date-time-picker' ),
+				'hourText'     => __( 'Hour', 'acf-field-date-time-picker' ),
+				'minuteText'   => __( 'Minute', 'acf-field-date-time-picker' ),
+				'secondText'   => __( 'Second', 'acf-field-date-time-picker' ),
+				'millisecText' => __( 'Millisecond', 'acf-field-date-time-picker' ),
+				'timezoneText' => __( 'Time Zone', 'acf-field-date-time-picker' ),
 				'isRTL'        => $wp_locale->is_rtl(),
 			);
 		}
