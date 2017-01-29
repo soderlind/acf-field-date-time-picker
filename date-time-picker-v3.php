@@ -485,7 +485,17 @@ class ACFFieldDateTimePicker extends acf_Field {
 
 		if ( false !== strpos( $locale, '-' ) ) {
 			$l = explode( '-', $locale );
-			$pattern = array( '/' . $locale . '/', '/' . $l[0] . '/', '/' . $l[1] . '/' );
+			switch ( $l[0] ) {
+				case 'en':
+				case 'fr':
+				case 'de':
+					$pattern = array( '/' . $l[0] . '/' );
+					break;
+
+				default:
+					$pattern = array( '/' . $l[1] . '/' );
+					break;
+			}
 		} else {
 			$pattern = array( '/' . $locale . '/' );
 		}
