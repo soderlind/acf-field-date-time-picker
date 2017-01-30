@@ -3,7 +3,7 @@
  * Plugin Name: Advanced Custom Fields: Date and Time Picker
  * Plugin URI: https://github.com/soderlind/acf-field-date-time-picker
  * Description: Date and Time Picker field for Advanced Custom Fields
- * Version: 2.1.4
+ * Version: 2.1.5
  * Author: Per Soderlind
  * Author URI: http://soderlind.no
  * License: GPLv2 or later
@@ -11,7 +11,7 @@
  * Text Domain: acf-field-date-time-picker
  * Domain Path: /languages
  */
-define( 'ACFFIELDDATETIMEPICKER_VERSION', '2.1.4' );
+define( 'ACFFIELDDATETIMEPICKER_VERSION', '2.1.5' );
 /**
  * Class acfFieldDateTimePickerPlugin
  */

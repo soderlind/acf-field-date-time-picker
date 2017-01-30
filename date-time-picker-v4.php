@@ -446,8 +446,7 @@ if ( ! class_exists( 'ACFFieldDateTimePicker' ) ) :
 
 			if ( false !== strpos( $locale, '-' ) ) {
 				$l = explode( '-', $locale );
-				// $pattern = array( '/' . $locale . '/', '/' . $l[0] . '/', '/' . $l[1] . '/' );
-				switch ($l[0]) {
+				switch ( $l[0] ) {
 					case 'en':
 					case 'fr':
 					case 'de':
@@ -461,10 +460,7 @@ if ( ! class_exists( 'ACFFieldDateTimePicker' ) ) :
 			} else {
 				$pattern = array( '/' . $locale . '/' );
 			}
-			write_log( $pattern );
 			$res = $this->ps_preg_filter( $pattern, '$0', $languages, -1, $count );
-			write_log('count ' . $count );
-			write_log( $res );
 			return ($count) ? implode( '', $res ) : 'en';
 		}
 

@@ -4,7 +4,7 @@ Donate link: http://soderlind.no/donate/
 Tags: acf, custom field,datepicker,timepicker
 Requires at least: 3.6
 Tested up to: 4.7
-Stable tag: 2.1.4
+Stable tag: 2.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -128,6 +128,8 @@ The Date and Time Picker field is saved as an UNIX timestamp. Use the PHP [date]
 
 
 == Changelog ==
+= 2.1.5 =
+* Remove call to write_log() causing fatal error. 
 = 2.1.4 =
 * Fix for English Canadian locale which became Catalan, also fixes other en_*, fr_* and de_* locale.
 = 2.1.3 =
