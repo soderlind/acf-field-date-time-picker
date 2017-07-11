@@ -24,7 +24,7 @@ This is an add-on for the [Advanced Custom Fields](http://wordpress.org/extend/p
 This add-on will work with:
 
 * Advanced Custom Fields version 4.*.*
-* Advanced Custom Fields version 3 and bellow
+* Advanced Custom Fields version 3 and below
 
 = More Information =
 
@@ -62,7 +62,7 @@ function my_register_fields()
 
 = Updating to ACF PRO =
 
-I got this quetion over at [AWP on Facebook](https://www.facebook.com/groups/advancedwp/permalink/1198240376904841/?comment_id=1198432300218982&notif_t=group_comment&notif_id=1469033404164280):
+I got this question over at [AWP on Facebook](https://www.facebook.com/groups/advancedwp/permalink/1198240376904841/?comment_id=1198432300218982&notif_t=group_comment&notif_id=1469033404164280):
 
 `
 How does upgrading work? If someone starts with ACF and your plugin,
@@ -133,7 +133,7 @@ The Date and Time Picker field is saved as an UNIX timestamp. Use the PHP [date]
 = 2.1.4 =
 * Fix for English Canadian locale which became Catalan, also fixes other en_*, fr_* and de_* locale.
 = 2.1.3 =
-* Sorry, but 2.1.2 had unfinsihed code, please update to 2.1.3
+* Sorry, but 2.1.2 had unfinished code, please update to 2.1.3
 = 2.1.2 =
 * Tested & found compatible with WP 4.7.
 = 2.1.1 =
@@ -158,7 +158,7 @@ The Date and Time Picker field is saved as an UNIX timestamp. Use the PHP [date]
 * Added support for date format dd/mm/yy
 * Bugfix
 = 2.0.11 =
-* Added option to retrive field values, using the_field() and get_field(), as a timestamp
+* Added option to retrieve field values, using the_field() and get_field(), as a timestamp
 = 2.0.10 =
 * Removed "value" from defaults
 = 2.0.9 =
@@ -173,7 +173,7 @@ The Date and Time Picker field is saved as an UNIX timestamp. Use the PHP [date]
 * Changed how the Date and Time Picker field is triggered when ACF adds a new Date and Time Picker field to the DOM
 * Saves the Date and Time Picker field as an UNIX timestamp to MySQL. Use the PHP [date](http://php.net/manual/en/function.date.php) function  when you use it in your theme.
 = 2.0.5 =
-* When enqueuing JavaScripts, replaced dependecy of jquery-ui-datepicker with acf-datepicker
+* When enqueuing JavaScripts, replaced dependency of jquery-ui-datepicker with acf-datepicker
 = 2.0.4 =
 * Updated JavaScript [language detection and loading](http://soderlind.no/time-picker-field-for-advanced-custom-fields/#localization)
 = 2.0.3 =
