@@ -89,7 +89,7 @@ acf = acf || {};
          *
          *  @return    n/a
          */
-        $(document).live('acf/setup_fields', function (e, postbox) {
+        $(document).on('acf/setup_fields', function (e, postbox) {
             $(postbox).find('input.ps_timepicker').each(function () {
                 var input = $(this),
                     is_timeonly = (input.attr('data-date_format') == undefined),
